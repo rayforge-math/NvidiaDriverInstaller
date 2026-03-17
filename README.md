@@ -63,7 +63,7 @@ Unlike standard installers, this script **strips** the driver before execution:
 
 - **HAGS & MPO** – Enables Hardware-Accelerated GPU Scheduling and disables Multi-Plane Overlay (fixing common browser flickering).
 - **Full RGB Range** – Forces the GPU class registry to use the full `0–255` color range on all displays.
-- **Latency Reduction** – Disables Game DVR and desktop transparency effects for a snappier UI response.
+- **Latency Reduction** – Disables Game DVR for a snappier UI response.
 
 ---
 
