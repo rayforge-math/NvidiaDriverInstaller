@@ -1,136 +1,15 @@
-# Central OS Identifier Map to avoid string duplication
-$GLOBAL_OS_KEYS = @{
-    WIN11       = "Windows 11"
-    WIN10_64    = "Windows 10 64-bit"
-    WIN10_32    = "Windows 10 32-bit"
-    SRV2022     = "Windows Server 2022"
-    SRV2019     = "Windows Server 2019"
-    UNKNOWN     = "Unknown"
-}
+$Dependencies = @("Networking.ps1", "Logging.ps1")
 
-# --- LOGGING ENGINE ---
-function Write-Log {
-    param (
-        [string]$Message,
-        [string]$Level = "INFO"
-    )
-
-    # Corrected hashtable with single '='
-    $prefix = @{ 
-        "INFO"    = "[i]"
-        "SUCCESS" = "[+]"
-        "WARN"    = "[!]"
-        "ERROR"   = "[-]"
-        "STEP"    = ">>>" 
-    }
-
-    $timestamp = Get-Date -Format "HH:mm:ss"
-    
-    # Check if Level exists in prefix, otherwise default to INFO
-    $p = if ($prefix.ContainsKey($Level)) { $prefix[$Level] } else { $prefix["INFO"] }
-
-    # Set colors based on level
-    $color = switch ($Level) {
-        "SUCCESS" { "Green" }
-        "WARN"    { "Yellow" }
-        "ERROR"   { "Red" }
-        "STEP"    { "Cyan" }
-        Default   { "Gray" }
-    }
-
-    Write-Host "$timestamp $p $Message" -ForegroundColor $color
-}
-
-# --- SHARED ENGINE ---
-
-function Start-Step {
-    <#
-    .SYNOPSIS
-        Evaluates if a step should run based on a progress file or forced overrides.
-    #>
-    param(
-        [string]$Name,
-        [int]$ID,
-        [string]$ProgressFile # Passed from Confirm-StepExecution
-    )
-    
-    # Priority 1: Manual Force Parameter (Global variable override)
-    if ($global:ForceStep -gt 0) {
-        if ($ID -lt $global:ForceStep) {
-            Write-Log "SKIPPING Step ${ID}: $Name (Forced start at $global:ForceStep)" -Level INFO
-            return $false
-        }
-    }
-    # Priority 2: Progress File (Persistence check)
-    else {
-        $LastID = 0
-        if (Test-Path $ProgressFile) { 
-            $content = Get-Content $ProgressFile -ErrorAction SilentlyContinue
-            if ($content -as [int]) { $LastID = [int]$content }
-        }
-
-        if ($ID -lt $LastID) {
-            Write-Log "SKIPPING Step ${ID}: $Name (Already completed according to progress file)" -Level INFO
-            return $false
-        }
-    }
-
-    # Visual Output for the current Step
-    Write-Host ""
-    Write-Log "STEP ${ID}: $Name" -Level STEP
-    Write-Host ("-" * ($Name.Length + 14)) -ForegroundColor Cyan
-    
-    # Save the current Step ID to the progress file
-    $ID | Set-Content $ProgressFile -Force
-    return $true
-}
-
-function Confirm-StepExecution {
-    <#
-    .SYNOPSIS
-        Main entry point for step control. Determines the calling script's identity 
-        and checks stop constraints before calling the execution logic.
-    #>
-    param (
-        [string]$StepName,
-        [int]$StepIndex,
-        [int]$StopAfter
-    )
-
-    # 1. Identify the caller to define the specific progress file
-    # Index [1] refers to the main script (e.g., SetupUser.ps1) calling this function
-    $CallingScriptPath = (Get-PSCallStack)[1].ScriptName
-    $ScriptName = [System.IO.Path]::GetFileNameWithoutExtension($CallingScriptPath)
-    $ProgressFile = Join-Path (Split-Path $CallingScriptPath) "$($ScriptName)_Progress.txt"
-
-    # 2. Check if the Stop-Threshold has been reached
-    if ($StopAfter -gt 0 -and $StepIndex -gt $StopAfter) {
-        Write-Log "Stop threshold reached ($StopAfter). Skipping further execution: '$StepName'." -Level WARN
-        return $false
-    }
-
-    # 3. Hand over to the Start-Step logic with the determined progress file
-    return Start-Step -Name $StepName -ID $StepIndex -ProgressFile $ProgressFile
-}
-
-function Remove-ProgressFile {
-    <#
-    .SYNOPSIS
-        Deletes the progress file associated with the calling script.
-        Call this at the very end of your main script.
-    #>
-    $CallingScriptPath = (Get-PSCallStack)[1].ScriptName
-    $ScriptName = [System.IO.Path]::GetFileNameWithoutExtension($CallingScriptPath)
-    $ProgressFile = Join-Path (Split-Path $CallingScriptPath) "$($ScriptName)_Progress.txt"
-
-    if (Test-Path $ProgressFile) {
-        Write-Log "Cleaning up progress file: $(Split-Path $ProgressFile -Leaf)" -Level INFO
-        Remove-Item $ProgressFile -Force -ErrorAction SilentlyContinue
+foreach ($File in $Dependencies) {
+    $FilePath = Join-Path $PSScriptRoot $File
+    if (Test-Path $FilePath) {
+        . $FilePath
+    } else {
+        Throw "Critical Error: Dependency '$File' not found at $FilePath"
     }
 }
 
 # --- HELPERS ---
-
 function Wait-ForKeyOrTimeout {
     <#
     .SYNOPSIS
@@ -186,21 +65,35 @@ function Assert-Admin {
     Write-Log "Administrative privileges confirmed." -Level SUCCESS
 }
 
-function Get-CurrentWindowsVersion {
-    <#
-    .SYNOPSIS
-        Identifies the current Windows OS version using central keys.
-    #>
-    $OS = Get-CimInstance Win32_OperatingSystem
-    $Caption = $OS.Caption
+function Get-SevenZipHelper {
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$DestinationPath
+    )
 
-    if ($Caption -match "Windows 11") { return $GLOBAL_OS_KEYS.WIN11 }
-    if ($Caption -match "Windows 10") {
-        if ($OS.OSArchitecture -match "64") { return $GLOBAL_OS_KEYS.WIN10_64 }
-        return $GLOBAL_OS_KEYS.WIN10_32
+    Write-Log "Requirement Check: 7-Zip Portable Helper" -Level INFO
+
+    if (Test-Path $DestinationPath) {
+        Write-Log "Utility already present ($(Split-Path $DestinationPath -Leaf))" -Level SUCCESS
+        return $true
     }
-    if ($Caption -match "Server 2022") { return $GLOBAL_OS_KEYS.SRV2022 }
-    if ($Caption -match "Server 2019") { return $GLOBAL_OS_KEYS.SRV2019 }
+
+    Write-Log "Not found. Initializing download..." -Level WARN -SubStep
     
-    return $GLOBAL_OS_KEYS.UNKNOWN
+    $dir = Split-Path $DestinationPath
+    if (!(Test-Path $dir)) { 
+        Write-Log "Creating directory: $dir" -Level INFO -SubStep
+        New-Item -Path $dir -ItemType Directory -Force | Out-Null 
+    }
+
+    try {
+        if (Start-SmartDownload -SourceUrl "https://www.7-zip.org/a/7zr.exe" -DestinationPath $DestinationPath) {
+            return $true
+        }
+    }
+    catch {
+        Write-Log "Error: Failed to acquire helper: $($_.Exception.Message)" -Level ERROR
+    }
+
+    return $false
 }

@@ -7,275 +7,134 @@ param (
     [int]$StopAfterStep = 0 # 0 = Run to end, >0 = Stop immediately after this step index
 )
 
-$UtilsPath = Join-Path $PSScriptRoot "Utils.ps1"
-if (Test-Path $UtilsPath) { . $UtilsPath } else { Throw "Critical Error: Utils.ps1 not found!" }
+$Dependencies = @("Utils.ps1", "WindowsIds.ps1", "WindowsHW.ps1", "NvidiaIds.ps1", "NvidiaHelpers.ps1", "Networking.ps1", "Logging.ps1", "Wsus.ps1")
 
-# Global Mapping for NVIDIA Driver API osID parameter
-# Matches internal IDs used by NVIDIA AjaxDriverService.php
-$GLOBAL_NVIDIA_OS_IDS = @{
-    $GLOBAL_OS_KEYS.WIN11    = 135
-    $GLOBAL_OS_KEYS.WIN10_64 = 57
-    $GLOBAL_OS_KEYS.WIN10_32 = 56
-    $GLOBAL_OS_KEYS.SRV2022  = 138
-    $GLOBAL_OS_KEYS.SRV2019  = 113
-}
-
-# Vendor ID (VID)
-$GLOBAL_VID_NVIDIA = "10DE"
-
-# This map links the Hardware Device ID (DEV_XXXX) to the specific 
-# Nvidia Product Family ID (PFID) required for their Ajax Driver API.
-$GLOBAL_NVIDIA_PID_MAP = @{
-    # --- RTX 50 Series (Blackwell) ---
-    "2D01" = "1045"; # RTX 5090
-    "2D02" = "1047"; # RTX 5080
-    
-    # --- RTX 40 Series (Ada Lovelace) ---
-    "2684" = "1005"; # RTX 4090
-    "2704" = "1013"; # RTX 4080
-    "2703" = "1013"; # RTX 4080 Super
-    "2782" = "973";  # RTX 4070 Ti
-    "2706" = "973";  # RTX 4070
-    "2786" = "967";  # RTX 4070 Super
-    "2811" = "957";  # RTX 4060 Ti
-    "2882" = "956";  # RTX 4060
-    
-    # --- RTX 30 Series (Ampere) ---
-    "2204" = "933";  # RTX 3090
-    "2208" = "933";  # RTX 3090 Ti
-    "2206" = "929";  # RTX 3080
-    "2216" = "929";  # RTX 3080 Ti
-    "220A" = "929";  # RTX 3080 12GB
-    "2484" = "911";  # RTX 3070
-    "2488" = "911";  # RTX 3070 Ti
-    "2486" = "903";  # RTX 3060 Ti
-    "2503" = "903";  # RTX 3060
-    "2504" = "903";  # RTX 3060 (LHR)
-
-    # --- RTX 20 Series (Turing) ---
-    "1E04" = "845";  # RTX 2080 Ti
-    "1E07" = "845";  # RTX 2080 Super
-    "1E82" = "834";  # RTX 2080
-    "1E87" = "834";  # RTX 2070 Super
-    "1F02" = "834";  # RTX 2070
-
-    # --- GTX 10 Series (Pascal) ---
-    "1B80" = "815";  # GTX 1080
-    "1B81" = "815";  # GTX 1070
-    "1B82" = "821";  # GTX 1080 Ti
-    "1B83" = "815";  # GTX 1070 Ti
-    "1C02" = "816";  # GTX 1060 3GB
-    "1C03" = "816";  # GTX 1060 6GB
-    "1C81" = "818";  # GTX 1050
-    "1C82" = "818";  # GTX 1050 Ti
-
-    # --- GTX 900 Series (Maxwell) ---
-    "17C2" = "751";  # GTX TITAN X (Maxwell)
-    "17C8" = "751";  # GTX 980 Ti
-    "13C0" = "744";  # GTX 980
-    "13C2" = "744";  # GTX 970
-    "1401" = "747";  # GTX 960
-    "1402" = "747"   # GTX 950
-}
-
-function Clear-WindowsUpdateCache {
-    <#
-    .SYNOPSIS
-        Purges the Windows Update cache using Robocopy to bypass MAX_PATH (260 character) limitations.
-    #>
-    Write-Log "Purging Windows Update Cache..." -Level STEP
-
-    $Services = @("wuauserv", "bits", "dosvc")
-    $cachePath = "C:\Windows\SoftwareDistribution\Download"
-    $emptyDir = Join-Path $env:TEMP "EmptyDirForPurge"
-
-    try {
-        # 1. Stop Services
-        foreach ($Service in $Services) {
-            if ((Get-Service -Name $Service -ErrorAction SilentlyContinue).Status -eq 'Running') {
-                Write-Log "Stopping $Service..." -Level INFO
-                Stop-Service -Name $Service -Force -ErrorAction SilentlyContinue
-            }
-        }
-
-        # 2. Use Robocopy to purge the folder (The "Nuclear Option" for long paths)
-        if (Test-Path $cachePath) {
-            Write-Log "Executing Robocopy purge on $cachePath..." -Level INFO
-            
-            # Create a temporary empty directory
-            if (!(Test-Path $emptyDir)) { New-Item $emptyDir -ItemType Directory -Force | Out-Null }
-            
-            # /PURGE deletes everything in the destination that isn't in the source (empty)
-            # /NJH /NJS /NDL /NC /NS hides the spammy robocopy logs
-            robocopy $emptyDir $cachePath /PURGE /NJH /NJS /NDL /NC /NS /MT:16 | Out-Null
-            
-            # Cleanup the empty helper dir
-            Remove-Item $emptyDir -Force -Recurse -ErrorAction SilentlyContinue
-            
-            Write-Log "Update cache cleared successfully." -Level SUCCESS
-        }
-    } catch {
-        Write-Log "Failed to clear Update Cache: $($_.Exception.Message)" -Level ERROR
-    }finally {
-        # 3. Restart Services
-        Write-Log "Restarting update services..." -Level INFO
-        foreach ($Service in $Services) {
-            Set-Service -Name $Service -StartupType Manual -ErrorAction SilentlyContinue
-            Start-Service -Name $Service -ErrorAction SilentlyContinue
-        }
-
-        if (Test-Path $emptyDir) { Remove-Item $emptyDir -Force -Recurse -ErrorAction SilentlyContinue }
-        Write-Log "Update services are back online." -Level SUCCESS
+foreach ($File in $Dependencies) {
+    $FilePath = Join-Path $PSScriptRoot $File
+    if (Test-Path $FilePath) {
+        . $FilePath
+    } else {
+        Throw "Critical Error: Dependency '$File' not found at $FilePath"
     }
-}
-
-function Disable-AutomaticDriverInstallation {
-    <#
-    .SYNOPSIS
-        Prevents Windows Update from automatically downloading and installing hardware drivers.
-        Includes Registry, Policy, and Metadata settings.
-    #>
-    
-    # Check for Admin rights
-    if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-        Write-Log "Please run this script as Administrator!" -Level ERROR
-        return
-    }
-
-    Write-Log "Configuring Driver Update Policy..." -Level STEP
-
-    try {
-        # 1. Disable Driver Searching (corresponds to sysdm.cpl "No" setting)
-        $dsPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching"
-        if (!(Test-Path $dsPath)) { New-Item -Path $dsPath -Force | Out-Null }
-        Set-ItemProperty -Path $dsPath -Name "SearchOrderConfig" -Value 0 -Type DWord -ErrorAction Stop
-        Write-Log "Set SearchOrderConfig to 0 (Manual / sysdm.cpl equivalent)." -Level INFO
-
-        # 2. Prevent drivers in Quality Updates (Registry & Group Policy equivalent)
-        $policyPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate"
-        if (!(Test-Path $policyPath)) { New-Item -Path $policyPath -Force | Out-Null }
-        Set-ItemProperty -Path $policyPath -Name "ExcludeWUDriversInQualityUpdate" -Value 1 -Type DWord -ErrorAction Stop
-        Write-Log "Set ExcludeWUDriversInQualityUpdate to 1 (Registry/GPEDit equivalent)." -Level INFO
-
-        # 3. Disable Device Metadata (Prevents icons/manufacturer info downloads)
-        $metadataPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata"
-        if (!(Test-Path $metadataPath)) { New-Item -Path $metadataPath -Force | Out-Null }
-        Set-ItemProperty -Path $metadataPath -Name "PreventDeviceMetadataFromNetwork" -Value 1 -Type DWord -ErrorAction Stop
-        Write-Log "Set PreventDeviceMetadataFromNetwork to 1 (Metadata disabled)." -Level INFO
-
-        Write-Log "Success: Automatic driver installations are now disabled." -Level SUCCESS
-    }
-    catch {
-        Write-Log "Failed to update driver registry keys: $($_.Exception.Message)" -Level ERROR
-    }
-}
-
-function Get-NvidiaApiOsId {
-    <#
-    .SYNOPSIS
-        Resolves a given Windows version key to an NVIDIA-specific osID.
-    .PARAMETER WinVer
-        The internal Windows version key (e.g. from $GLOBAL_OS_KEYS).
-    #>
-    param (
-        [Parameter(Mandatory=$true)]
-        [string]$WinVer
-    )
-
-    # 1. Check if we have a specific mapping for the provided version key
-    if ($GLOBAL_NVIDIA_OS_IDS.ContainsKey($WinVer)) {
-        $osID = $GLOBAL_NVIDIA_OS_IDS[$WinVer]
-        Write-Log "NVIDIA API: Resolved [$WinVer] to ID $osID" -Level INFO
-        return $osID
-    }
-
-    # 2. Fallback logic using the central Map if the key is unknown
-    $FallbackKey = $GLOBAL_OS_KEYS.WIN10_64
-    $FallbackId  = $GLOBAL_NVIDIA_OS_IDS[$FallbackKey]
-
-    Write-Log "NVIDIA API: No mapping for [$WinVer]. Falling back to [$FallbackKey] (ID $FallbackId)." -Level WARN
-    
-    return $FallbackId
 }
 
 function Install-NvidiaDriverBare {
+    <#
+    .SYNOPSIS
+        Downloads and installs a stripped-down NVIDIA driver.
+        Returns $true if a new driver was actually installed, otherwise $false.
+    #>
     param (
         [Parameter(Mandatory=$true)]
-        [string]$WinVer,
+        [WindowsVersionKey]$WinVer,
         [switch]$Clean = $false,
-        [string]$DownloadFolder = "$env:temp\NvidiaUpdate"
+        [string]$DownloadFolder = $null
     )
 
     Write-Log "Nvidia Driver Setup (Bare Installation)..." -Level STEP
 
     # --- 1. Hardware Detection & API Check ---
     try {
-        $gpu = Get-CimInstance Win32_VideoController | Where-Object { $_.PNPDeviceID -match "VEN_${GLOBAL_VID_NVIDIA}" } | Select-Object -First 1
-        if (!$gpu) { 
-            Write-Log "No Nvidia Hardware (VEN_${GLOBAL_VID_NVIDIA}) detected. Skipping." -Level INFO
-            return 
+        Write-Log "Checking Hardware and Requirements" -Level INFO
+        $gpus = Get-HardwareByVid -Vid $GLOBAL_VID_NVIDIA
+
+        if ($gpus.Count -eq 0) {
+            Write-Log "No NVIDIA hardware detected. Skipping." -Level INFO -SubStep
+            return [DriverInstallationResult]::NoInstall
         }
 
-        # Dynamic PID Detection Logic
-        $pfid = "929" # Static Fallback: RTX 3080
-        if ($gpu.PNPDeviceID -match "DEV_([A-F0-9]{4})") {
-            $devId = $Matches[1].ToUpper()
-
-            if ($GLOBAL_NVIDIA_PID_MAP.ContainsKey($devId)) {
-                $pfid = $GLOBAL_NVIDIA_PID_MAP[$devId]
-                Write-Log "Hardware recognized (PID: $devId). Using dynamic PFID: $pfid" -Level INFO
-            }
+        $gpu = $gpus[0]
+        if ($gpus.Count -gt 1) {
+            Write-Log "Detected multiple NVIDIA GPUs. Using $($gpu.Caption) as primary." -Level INFO -SubStep
         }
 
-        # Query latest Driver Version
-        $osID = Get-NvidiaApiOsId -WinVer $WinVer
-        $uri = "https://gfwsl.geforce.com/services_toolkit/services/com/nvidia/services/AjaxDriverService.php?func=DriverManualLookup&psid=120&pfid=$pfid&osID=$osID&languageCode=1033&isWHQL=1&dch=1&numberOfResults=1"
-        $payload = Invoke-RestMethod -Uri $uri
-        $latestVersion = $payload.IDS[0].downloadInfo.Version
-        
-        $currentVersion = ($gpu.DriverVersion.Replace('.', '')[-5..-1] -join '').Insert(3, '.')
-        Write-Log "Installed: $currentVersion | Latest: $latestVersion" -Level INFO
+        # Local Status & Provider Check
+        $currentVersion = Format-NvidiaVersion -WmiVersion $gpu.DriverVersion
+        $isNvidia = ($gpu.ProviderName -match "NVIDIA") -or 
+                    ($gpu.Caption -match "NVIDIA") -or 
+                    ($gpu.VideoProcessor -match "NVIDIA")
 
-        if (!$Clean -and ($currentVersion -eq $latestVersion)) {
-            Write-Log "Nvidia Driver is already up to date." -Level SUCCESS
-            return
+        # Remote Status Check
+        $pfid = Get-NvidiaPfid -Gpu $gpu
+        $osId = Get-NvidiaApiOsId -WinVer $WinVer
+        $latestVersion = Get-NvidiaLatestVersion -Pfid $pfid -OsId $osId
+
+        if ($null -eq $latestVersion) {
+            Write-Log "Aborting: Could not determine latest version from API." -Level ERROR
+            return [DriverInstallationResult]::NoInstall
+        }
+
+        # Logic & Decision Making
+        $provider = if ($isNvidia) { "NVIDIA" } else { "Microsoft/Generic/Other" }
+        Write-Log "Status: [Provider: $provider] | [Installed: $currentVersion] | [Latest: $latestVersion]" -Level INFO
+
+        # Check if already up-to-date
+        if ($isNvidia -and ($currentVersion -eq $latestVersion)) {
+            Write-Log "NVIDIA Driver is already up-to-date ($currentVersion)." -Level SUCCESS
+            return [DriverInstallationResult]::SameVersion
+        }
+
+        # Final Action Message
+        if (!$isNvidia) {
+            Write-Log "Action Required: Current driver is NOT NVIDIA software. Deployment required." -Level WARN
+        } else {
+            Write-Log "Action Required: Update available ($currentVersion -> $latestVersion)." -Level INFO
         }
     } 
     catch {
         Write-Log "Nvidia API/Hardware check failed: $($_.Exception.Message)" -Level ERROR
-        return
+        return [DriverInstallationResult]::NoInstall
     }
 
     # --- 2. Download & Extraction ---
     try {
-        if (!(Test-Path $DownloadFolder)) { New-Item $DownloadFolder -ItemType Directory -Force | Out-Null }
-        $fileName = "$latestVersion-desktop-win10-win11-64bit-international-dch-whql.exe"
-        $dlPath = Join-Path $DownloadFolder $fileName
+        Write-Log "Preparing Installation Environment" -Level INFO
+        if ([string]::IsNullOrWhiteSpace($DownloadFolder)) {
+            $DownloadFolder = Join-Path $env:TEMP "NvidiaUpdate"
+        }
+
+        if (Test-Path $DownloadFolder) {
+            Write-Log "Cleaning up existing download folder: $DownloadFolder" -Level INFO -SubStep
+            Get-ChildItem $DownloadFolder | Where-Object { $_.Name -ne "7zr.exe" } | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+        } else {
+            Write-Log "Creating download directory: $DownloadFolder" -Level INFO -SubStep
+            New-Item $DownloadFolder -ItemType Directory -Force | Out-Null
+        }
+
+        Write-Log "Working Directory set to: $DownloadFolder" -Level INFO -SubStep
         $extractPath = Join-Path $DownloadFolder "Extracted"
         $sevenZipExe = Join-Path $DownloadFolder "7zr.exe"
 
-        if (!(Test-Path $sevenZipExe)) {
-            Invoke-WebRequest -Uri "https://www.7-zip.org/a/7zr.exe" -OutFile $sevenZipExe
+        # 7-Zip Setup
+        if (!(Get-SevenZipHelper -DestinationPath $sevenZipExe)) {
+            throw "Abort: Required helper tool (7-Zip) could not be acquired."
         }
     
-        $DownloadUrl = "https://international.download.nvidia.com/Windows/$latestVersion/$fileName"
-        Write-Log "Downloading Driver v$latestVersion..." -Level INFO
-        Start-BitsTransfer -Source $DownloadUrl -Destination $dlPath -Priority High
+        # Driver Download
+        $dlPath = Get-NvidiaDriverFile -Version $latestVersion -DestinationFolder $DownloadFolder -WinVer $WinVer
+        
+        if ($null -eq $dlPath) {
+            throw "Driver download failed."
+        }
 
-        Write-Log "Extracting full package..." -Level INFO
+        # Extraction
+        if (Test-Path $extractPath) { Remove-Item $extractPath -Recurse -Force | Out-Null }
+        Write-Log "Extracting to: $extractPath" -Level INFO
         $extractArgs = "x `"$dlPath`" -o`"$extractPath`" -y"
-        Start-Process -FilePath $sevenZipExe -ArgumentList $extractArgs -Wait -WindowStyle Hidden
+        $extProcess = Start-Process -FilePath $sevenZipExe -ArgumentList $extractArgs -Wait -WindowStyle Hidden -PassThru
+        if ($extProcess.ExitCode -ne 0) { throw "Extraction failed." }
 
         # 3. Component Selection (The "Bare" part)
         # We manually remove folders we don't want before starting the setup
         # need to further inspect setup.cfg before precise debloat can be applied
         # until then this stays
         $bloatFolders = @("GFExperience", "NVFans", "Node.js", "NvTelemetry", "Update.Core")
+        Write-Log "Stripping unnecessary components..." -Level INFO
         foreach ($folder in $bloatFolders) {
             $path = Join-Path $extractPath $folder
             if (Test-Path $path) { 
                 Remove-Item $path -Recurse -Force | Out-Null
-                Write-Log "Removed Bloat: $folder" -Level INFO
+                Write-Log "Deleted $folder" -Level INFO -SubStep
             }
         }
 
@@ -314,35 +173,47 @@ function Install-NvidiaDriverBare {
         #}
 
         # --- 4. Installation ---
-        Write-Log "Starting Installation..." -Level INFO
+        Write-Log "Executing Setup: $extractPath\setup.exe" -Level INFO
         $installArgs = @("-passive", "-noreboot", "-noeula", "-nofinish", "-s")
         if ($Clean) { $installArgs += "-clean" }
         
         $process = Start-Process -FilePath "$extractPath\setup.exe" -ArgumentList $installArgs -Wait -PassThru
+        Write-Log "NVIDIA Setup finished with ExitCode: $($process.ExitCode)" -Level INFO
         
         if ($process.ExitCode -ne 0 -and $process.ExitCode -ne 3010) {
-            throw "Installation failed with ExitCode $($process.ExitCode)."
+            throw "Installation failed (Code $($process.ExitCode))."
         }
 
         # --- 5. Post-Install Cleanup ---
-        Write-Log "Cleaning up remaining Telemetry Tasks & Services..." -Level INFO
-        Get-ScheduledTask -TaskPath "\" -ErrorAction SilentlyContinue | Where-Object { $_.TaskName -match "NvTm|Nvidia" } | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
+        Write-Log "Final Telemetry Removal..." -Level INFO
+        Get-ScheduledTask -TaskPath "\" -ErrorAction SilentlyContinue | Where-Object { $_.TaskName -match "NvTm|Nvidia" } | ForEach-Object {
+            Write-Log "Unregistering Task: $($_.TaskName)" -Level INFO -SubStep
+            Unregister-ScheduledTask -TaskName $_.TaskName -Confirm:$false -ErrorAction SilentlyContinue
+        }
+
         $badServices = @("NvTelemetryContainer", "NvDbuls", "NvContainerLocalSystem")
         foreach ($s in $badServices) { 
             if (Get-Service $s -ErrorAction SilentlyContinue) { 
+                Write-Log "Deleting service: $s" -Level INFO -SubStep
                 Stop-Service $s -Force -ErrorAction SilentlyContinue
-                sc.exe delete $s 
+                sc.exe delete $s | Out-Null
             } 
         }
 
         Write-Log "Nvidia Bare Driver v$latestVersion installed successfully." -Level SUCCESS
+        return [DriverInstallationResult]::Install
     }
-    catch { Write-Log "Setup failed: $($_.Exception.Message)" -Level ERROR }
+    catch { 
+        Write-Log "Critical Error: $($_.Exception.Message)" -Level ERROR 
+        return [DriverInstallationResult]::NoInstall
+    }
     finally { 
-        if (Test-Path $DownloadFolder) { Remove-Item $DownloadFolder -Recurse -Force -ErrorAction SilentlyContinue } 
+        if (Test-Path $DownloadFolder) { 
+            Write-Log "Cleaning up temporary files..." -Level INFO
+            Remove-Item $DownloadFolder -Recurse -Force -ErrorAction SilentlyContinue 
+        } 
     }
 }
-
 
 function Set-WindowsGPUTweaks {
     <#
@@ -355,13 +226,13 @@ function Set-WindowsGPUTweaks {
     try {
         # 1. Disable Multi-Plane Overlay (MPO)
         # Universal DWM tweak. Prevents flickering/stuttering in browsers & apps.
-        Write-Log "  > Disabling MPO (Multi-Plane Overlay)..." -Level INFO
+        Write-Log "Disabling MPO (Multi-Plane Overlay)..." -Level INFO -SubStep
         $dwmPath = "HKLM:\SOFTWARE\Microsoft\Windows\Dwm"
         if (!(Test-Path $dwmPath)) { New-Item $dwmPath -Force | Out-Null }
         Set-ItemProperty -Path $dwmPath -Name "OverlayTestMode" -Value 5 -Type Dword
 
         # 2. Enable Hardware Accelerated GPU Scheduling (HAGS)
-        Write-Log "  > Enabling HAGS..." -Level INFO
+        Write-Log "Enabling HAGS..." -Level INFO -SubStep
         Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" -Name "HwSchMode" -Value 2 -Force
 
         # 3. Disable Transparency & Game DVR
@@ -387,13 +258,14 @@ function Set-NvidiaRegistryTweaks {
     $instances = Get-ChildItem -Path $gpuClassPath -ErrorAction SilentlyContinue | Where-Object { $_.PSChildName -match "^\d{4}$" }
 
     foreach ($instance in $instances) {
-        Write-Log "  > Setting Full RGB for Instance: $($instance.PSChildName)" -Level INFO
+        Write-Log "Setting Full RGB for Instance: $($instance.PSChildName)" -Level INFO -SubStep
         Set-ItemProperty -Path $instance.PSPath -Name "VPrG_OutputRange" -Value 1 -ErrorAction SilentlyContinue
     }
 
     # 2. Disable NVIDIA Telemetry (If exists)
     $telemetryPath = "HKLM:\SOFTWARE\NVIDIA Corporation\Global\NvTelemetry"
     if (Test-Path $telemetryPath) {
+        Write-Log "Disabling Telemetry in Registry Hive..." -Level INFO -SubStep
         Set-ItemProperty -Path $telemetryPath -Name "FeatureControl" -Value 0 -Type Dword -ErrorAction SilentlyContinue
     }
 
@@ -404,12 +276,18 @@ function Set-NvidiaRegistryTweaks {
 # MAIN EXECUTION
 # ==============================================================================
 
+Enum DriverInstallationResult {
+    NoInstall
+    Install
+    SameVersion
+}
+
 Write-Log "Starting System-Level Setup" -Level STEP
 
 Assert-Admin
 
 # --- IMPORTANT PRE-FLIGHT NOTICE ---
-Write-Host "`n" # Spacer
+Write-Host "`n"
 Write-Host "****************************************************************" -ForegroundColor Yellow
 Write-Host "  ATTENTION: CLEAN INSTALL RECOMMENDED" -ForegroundColor Yellow
 Write-Host "  1. Uninstall old drivers (ideally using DDU)." -ForegroundColor White
@@ -422,6 +300,8 @@ if ($ForceStep -gt 0) {
     Write-Log "Manual Override: Starting at Step $ForceStep" -Level WARN 
 }
 
+$installResult = [DriverInstallationResult]::NoInstall
+
 # 1. Prepare Windows
 if (Confirm-StepExecution "Prepare Windows" 1 $StopAfterStep) {
     Disable-AutomaticDriverInstallation
@@ -431,26 +311,42 @@ if (Confirm-StepExecution "Prepare Windows" 1 $StopAfterStep) {
 # 2. Hardware & Driver Setup
 if (Confirm-StepExecution "Hardware & Driver Setup" 2 $StopAfterStep) {
     $winVer = Get-CurrentWindowsVersion
-    Install-NvidiaDriverBare -WinVer $winVer
+    $installResult = Install-NvidiaDriverBare -WinVer $winVer -Clean $Clean
     #Install-NvidiaProfileInspector
-    #Install-MultiMonitorTool
+    #Install-MultiMonitorTool 
 }
 
 # 3. Final System Optimization & Performance
 if (Confirm-StepExecution "Final System Optimization" 3 $StopAfterStep) {
-    Set-WindowsGPUTweaks
-    Set-NvidiaRegistryTweaks
-    #Set-NvidiaProfileSettings
-    #Set-MonitorLayout
+    if ($installResult -ne [DriverInstallationResult]::NoInstall) {
+        Set-WindowsGPUTweaks
+        Set-NvidiaRegistryTweaks
+        #Set-NvidiaProfileSettings
+        #Set-MonitorLayout 
+    } 
+    else {
+        Write-Log "Skipping Optimization: No successful driver installation detected." -Level WARN
+    }
 }
 
 Remove-ProgressFile
 
-$cancelled = Wait-ForKeyOrTimeout -Timeout 30 -Message "Rebooting in"
+$shouldReboot = $installResult -eq [DriverInstallationResult]::Install
 
-if ($cancelled) {
-    Write-Log "Reboot cancelled by user. Review logs above." -Level ERROR
-} else {
-    Write-Log "Initiating system restart..." -Level INFO
-    Restart-Computer -Force
+if ($shouldReboot) {
+    $cancelled = Wait-ForKeyOrTimeout -Timeout 30 -Message "Changes require a restart. Rebooting in"
+
+    if ($cancelled) {
+        Write-Log "Reboot cancelled by user. Please restart manually to apply all tweaks." -Level WARN
+    } else {
+        Write-Log "Initiating system restart..." -Level INFO
+        Restart-Computer -Force
+    }
+} 
+else {
+    if ($installResult -eq [DriverInstallationResult]::SameVersion) {
+        Write-Log "Execution finished: Everything up to date. No reboot needed." -Level SUCCESS
+    } else {
+        Write-Log "Execution finished: No changes were made." -Level INFO
+    }
 }
