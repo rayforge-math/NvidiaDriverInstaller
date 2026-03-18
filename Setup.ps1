@@ -7,7 +7,16 @@ param (
     [int]$StopAfterStep = 0 # 0 = Run to end, >0 = Stop immediately after this step index
 )
 
-$Dependencies = @("Utils.ps1", "WindowsIds.ps1", "WindowsHW.ps1", "NvidiaIds.ps1", "NvidiaHelpers.ps1", "Networking.ps1", "Logging.ps1", "Wsus.ps1")
+$Dependencies = @(
+    "Utils.ps1", 
+    "WindowsIds.ps1", 
+    "WindowsHW.ps1", 
+    "NvidiaIds.ps1", 
+    "NvidiaHelpers.ps1", 
+    "Networking.ps1", 
+    "Logging.ps1", 
+    "Wsus.ps1",
+    "PidResolver.ps1")
 
 foreach ($File in $Dependencies) {
     $FilePath = Join-Path $PSScriptRoot $File
@@ -27,7 +36,7 @@ function Install-NvidiaDriverBare {
     param (
         [Parameter(Mandatory=$true)]
         [WindowsVersionKey]$WinVer,
-        [switch]$Clean = $false,
+        [bool]$Clean = $false,
         [string]$DownloadFolder = $null
     )
 
@@ -55,9 +64,10 @@ function Install-NvidiaDriverBare {
                     ($gpu.VideoProcessor -match "NVIDIA")
 
         # Remote Status Check
-        $pfid = Get-NvidiaPfid -Gpu $gpu
+        $pciDetails = Get-PciRepoDeviceDetails -VendorId $gpu.VendorId -DeviceId $gpu.DeviceId
+        $nvidiaDriverMeta = Get-NvidiaDriverRequestMeta -VendorId $pciDetails.VendorId -PrimaryName $pciDetails.PrimaryName
         $osId = Get-NvidiaApiOsId -WinVer $WinVer
-        $latestVersion = Get-NvidiaLatestVersion -Pfid $pfid -OsId $osId
+        $latestVersion = Get-NvidiaLatestVersion -Pfid $nvidiaDriverMeta.pfid -OsId $osId
 
         if ($null -eq $latestVersion) {
             Write-Log "Aborting: Could not determine latest version from API." -Level ERROR
@@ -71,7 +81,7 @@ function Install-NvidiaDriverBare {
         # Check if already up-to-date
         if ($isNvidia -and ($currentVersion -eq $latestVersion)) {
             Write-Log "NVIDIA Driver is already up-to-date ($currentVersion)." -Level SUCCESS
-            return [DriverInstallationResult]::SameVersion
+            return [DriverInstallationResult]::NoInstall
         }
 
         # Final Action Message
@@ -88,6 +98,7 @@ function Install-NvidiaDriverBare {
 
     # --- 2. Download & Extraction ---
     try {
+        # --- STAGE 1: Environment Setup ---
         Write-Log "Preparing Installation Environment" -Level INFO
         if ([string]::IsNullOrWhiteSpace($DownloadFolder)) {
             $DownloadFolder = Join-Path $env:TEMP "NvidiaUpdate"
@@ -95,117 +106,63 @@ function Install-NvidiaDriverBare {
 
         if (Test-Path $DownloadFolder) {
             Write-Log "Cleaning up existing download folder: $DownloadFolder" -Level INFO -SubStep
-            Get-ChildItem $DownloadFolder | Where-Object { $_.Name -ne "7zr.exe" } | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+            Get-ChildItem $DownloadFolder | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
         } else {
             Write-Log "Creating download directory: $DownloadFolder" -Level INFO -SubStep
             New-Item $DownloadFolder -ItemType Directory -Force | Out-Null
         }
 
-        Write-Log "Working Directory set to: $DownloadFolder" -Level INFO -SubStep
         $extractPath = Join-Path $DownloadFolder "Extracted"
-        $sevenZipExe = Join-Path $DownloadFolder "7zr.exe"
 
-        # 7-Zip Setup
-        if (!(Get-SevenZipHelper -DestinationPath $sevenZipExe)) {
-            throw "Abort: Required helper tool (7-Zip) could not be acquired."
-        }
-    
-        # Driver Download
-        $dlPath = Get-NvidiaDriverFile -Version $latestVersion -DestinationFolder $DownloadFolder -WinVer $WinVer
-        
-        if ($null -eq $dlPath) {
-            throw "Driver download failed."
-        }
+        # --- STAGE 2: Download & Expansion ---
+        $dlPath = Get-NvidiaDriverPackage -Version $latestVersion -DestinationFolder $DownloadFolder -WinVer $WinVer
+        if ($null -eq $dlPath) { throw "Driver download failed." }
 
-        # Extraction
-        if (Test-Path $extractPath) { Remove-Item $extractPath -Recurse -Force | Out-Null }
-        Write-Log "Extracting to: $extractPath" -Level INFO
-        $extractArgs = "x `"$dlPath`" -o`"$extractPath`" -y"
-        $extProcess = Start-Process -FilePath $sevenZipExe -ArgumentList $extractArgs -Wait -WindowStyle Hidden -PassThru
-        if ($extProcess.ExitCode -ne 0) { throw "Extraction failed." }
-
-        # 3. Component Selection (The "Bare" part)
-        # We manually remove folders we don't want before starting the setup
-        # need to further inspect setup.cfg before precise debloat can be applied
-        # until then this stays
-        $bloatFolders = @("GFExperience", "NVFans", "Node.js", "NvTelemetry", "Update.Core")
-        Write-Log "Stripping unnecessary components..." -Level INFO
-        foreach ($folder in $bloatFolders) {
-            $path = Join-Path $extractPath $folder
-            if (Test-Path $path) { 
-                Remove-Item $path -Recurse -Force | Out-Null
-                Write-Log "Deleted $folder" -Level INFO -SubStep
-            }
+        # Use the helper function for clean extraction
+        if (!(Expand-NvidiaDriverPackage -PackagePath $dlPath -DestinationPath $extractPath)) 
+        {
+            throw "Extraction process failed."
         }
 
         # --- 3. Deep Debloat (XML & Folder Stripping) ---
-        #Write-Log "Deep Stripping setup.cfg (Removing App & Telemetry blocks)..." -Level INFO
-        #$cfgPath = Join-Path $extractPath "setup.cfg"
-        #if (Test-Path $cfgPath) {
-        #    [xml]$cfg = Get-Content $cfgPath
-        #
-        #    $toNuke = @(
-        #        "Display.NvApp", "NvContainer", "NvContainer.LocalSystem", 
-        #        "NvContainer.Session", "NvContainer.User", "NvPlugin.Watchdog",
-        #        "VirtualAudio.Driver", "ShadowPlay", "Display.NVWMI", 
-        #        "FrameViewSdk", "Display.NvApp.MessageBus", "Display.NvApp.NvBackend", 
-        #        "Display.NvApp.NvCPL", "NvDLISR", "NvTelemetry"
-        #    )
-        #
-        #    $installNode = $cfg.setup.install
-        #    foreach ($name in $toNuke) {
-        #        $node = $installNode.SelectSingleNode("sub-package[@name='$name']")
-        #        if ($node) { [void]$installNode.RemoveChild($node) }
-        #    }
-        #
-        #    $cfg.setup.strings.ChildNodes | Where-Object { $_.name -match 'PrivacyPolicyFile|FunctionalConsentFile|EulaHtmlFile|CheckForUpdates' } | ForEach-Object { [void]$_.ParentNode.RemoveChild($_) }
-        #
-        #    $cfg.Save($cfgPath)
-        #}
-
-        #$bloatFolders = @(
-        #    "GFExperience", "NvTelemetry", "Update.Core", "Display.Update", "NvApp",
-        #    "NVFans", "Node.js", "NvVAD", "ShieldWirelessController", "NvAbp", "NvBackend"
-        #)
-        #foreach ($folder in $bloatFolders) {
-        #    $p = Join-Path $extractPath $folder
-        #    if (Test-Path $p) { Remove-Item $p -Recurse -Force -ErrorAction SilentlyContinue }
-        #}
+        if(!(Debloat-NvidiaDriverPackage -ExtractPath $extractPath))
+        {
+            Write-Log "Debloat failed. Skipping." -Level WARN
+        }
 
         # --- 4. Installation ---
-        Write-Log "Executing Setup: $extractPath\setup.exe" -Level INFO
-        $installArgs = @("-passive", "-noreboot", "-noeula", "-nofinish", "-s")
-        if ($Clean) { $installArgs += "-clean" }
-        
-        $process = Start-Process -FilePath "$extractPath\setup.exe" -ArgumentList $installArgs -Wait -PassThru
-        Write-Log "NVIDIA Setup finished with ExitCode: $($process.ExitCode)" -Level INFO
-        
-        if ($process.ExitCode -ne 0 -and $process.ExitCode -ne 3010) {
-            throw "Installation failed (Code $($process.ExitCode))."
+        $exitCode = Install-NvidiaDriverPackage -ExtractPath $extractPath -Clean $Clean
+        $shouldReboot = $false
+
+        if ($exitCode -eq $NVIDIA_DRIVER_SUCCESS) {
+            Write-Log "NVIDIA Driver installation completed successfully." -Level SUCCESS
+        }
+        elseif ($exitCode -eq $NVIDIA_DRIVER_SUCCESS_REBOOT) {
+            Write-Log "NVIDIA Driver installation completed successfully. (Reboot required)" -Level SUCCESS
+            $shouldReboot = $true
+        }
+        else 
+        {
+            throw "NVIDIA Driver Installation failed with ExitCode: $exitCode"
         }
 
         # --- 5. Post-Install Cleanup ---
-        Write-Log "Final Telemetry Removal..." -Level INFO
-        Get-ScheduledTask -TaskPath "\" -ErrorAction SilentlyContinue | Where-Object { $_.TaskName -match "NvTm|Nvidia" } | ForEach-Object {
-            Write-Log "Unregistering Task: $($_.TaskName)" -Level INFO -SubStep
-            Unregister-ScheduledTask -TaskName $_.TaskName -Confirm:$false -ErrorAction SilentlyContinue
-        }
+        Cleanup-NvidiaServices
 
-        $badServices = @("NvTelemetryContainer", "NvDbuls", "NvContainerLocalSystem")
-        foreach ($s in $badServices) { 
-            if (Get-Service $s -ErrorAction SilentlyContinue) { 
-                Write-Log "Deleting service: $s" -Level INFO -SubStep
-                Stop-Service $s -Force -ErrorAction SilentlyContinue
-                sc.exe delete $s | Out-Null
-            } 
+        Write-Log "Installation process finished." -Level SUCCESS
+        if($shouldReboot)
+        {
+            return [DriverInstallationResult]::RebootRequired
         }
-
-        Write-Log "Nvidia Bare Driver v$latestVersion installed successfully." -Level SUCCESS
-        return [DriverInstallationResult]::Install
+        else
+        {
+            return [DriverInstallationResult]::Success
+        }
+        
     }
     catch { 
         Write-Log "Critical Error: $($_.Exception.Message)" -Level ERROR 
-        return [DriverInstallationResult]::NoInstall
+        return [DriverInstallationResult]::Error
     }
     finally { 
         if (Test-Path $DownloadFolder) { 
@@ -277,9 +234,10 @@ function Set-NvidiaRegistryTweaks {
 # ==============================================================================
 
 Enum DriverInstallationResult {
+    Error
     NoInstall
-    Install
-    SameVersion
+    Success
+    RebootRequired
 }
 
 Write-Log "Starting System-Level Setup" -Level STEP
@@ -298,6 +256,7 @@ Write-Host "`n"
 
 if ($ForceStep -gt 0) { 
     Write-Log "Manual Override: Starting at Step $ForceStep" -Level WARN 
+    Set-Step -ID $ForceStep
 }
 
 $installResult = [DriverInstallationResult]::NoInstall
@@ -311,7 +270,7 @@ if (Confirm-StepExecution "Prepare Windows" 1 $StopAfterStep) {
 # 2. Hardware & Driver Setup
 if (Confirm-StepExecution "Hardware & Driver Setup" 2 $StopAfterStep) {
     $winVer = Get-CurrentWindowsVersion
-    $installResult = Install-NvidiaDriverBare -WinVer $winVer -Clean $Clean
+    $installResult = Install-NvidiaDriverBare -WinVer $winVer
     #Install-NvidiaProfileInspector
     #Install-MultiMonitorTool 
 }
@@ -331,22 +290,34 @@ if (Confirm-StepExecution "Final System Optimization" 3 $StopAfterStep) {
 
 Remove-ProgressFile
 
-$shouldReboot = $installResult -eq [DriverInstallationResult]::Install
+# --- Final Result Handling ---
+switch ($installResult) {
+    ([DriverInstallationResult]::RebootRequired) {
+        Write-Log "Nvidia Driver v$latestVersion installed. A REBOOT is required to apply all changes." -Level SUCCESS
+        
+        $cancelled = Wait-ForKeyOrTimeout -Timeout 30 -Message "System will RESTART in"
 
-if ($shouldReboot) {
-    $cancelled = Wait-ForKeyOrTimeout -Timeout 30 -Message "Changes require a restart. Rebooting in"
-
-    if ($cancelled) {
-        Write-Log "Reboot cancelled by user. Please restart manually to apply all tweaks." -Level WARN
-    } else {
-        Write-Log "Initiating system restart..." -Level INFO
-        Restart-Computer -Force
+        if ($cancelled) {
+            Write-Log "Reboot cancelled by user. Please restart manually to apply all tweaks." -Level WARN
+        } else {
+            Write-Log "Initiating system restart..." -Level INFO
+            Restart-Computer -Force
+        }
     }
-} 
-else {
-    if ($installResult -eq [DriverInstallationResult]::SameVersion) {
-        Write-Log "Execution finished: Everything up to date. No reboot needed." -Level SUCCESS
-    } else {
-        Write-Log "Execution finished: No changes were made." -Level INFO
+
+    ([DriverInstallationResult]::Success) {
+        Write-Log "Execution finished: Nvidia Driver v$latestVersion installed successfully. No reboot needed." -Level SUCCESS
+    }
+
+    ([DriverInstallationResult]::NoInstall) {
+        Write-Log "Execution finished: Driver is already up to date or no compatible hardware found. No changes made." -Level INFO
+    }
+
+    ([DriverInstallationResult]::Error) {
+        Write-Log "Execution finished with ERRORS. Please check the log for details." -Level ERROR
+    }
+
+    Default {
+        Write-Log "Execution finished with an unknown result code." -Level WARN
     }
 }

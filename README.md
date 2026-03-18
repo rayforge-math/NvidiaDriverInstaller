@@ -72,7 +72,7 @@ Unlike standard installers, this script **strips** the driver before execution:
 Run **PowerShell as Administrator** and execute:
 
 ```powershell
-.\NvidiaSetup.ps1
+.\Setup.ps1
 ```
 
 ### Advanced Control

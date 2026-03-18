@@ -136,7 +136,7 @@ function Wait-ForConnection {
             }
         }
         catch {
-            Write-Host -NoNewline "!" -ForegroundColor Red
+            Write-Host -NoNewline "." -ForegroundColor Red
             Start-Sleep -Seconds 1
         }
 

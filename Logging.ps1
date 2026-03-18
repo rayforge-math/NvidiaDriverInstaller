@@ -33,6 +33,33 @@ function Write-Log {
 }
 
 # --- SHARED ENGINE ---
+function Set-Step {
+    <#
+    .SYNOPSIS
+        Sets the progress file to a specific step ID.
+    .PARAMETER ID
+        The integer ID of the completed step.
+    #>
+    param (
+        [Parameter(Mandatory=$true)]
+        [int]$ID
+    )
+
+    try {
+        $CallingScriptPath = (Get-PSCallStack)[1].ScriptName
+        
+        $ScriptName = [System.IO.Path]::GetFileNameWithoutExtension($CallingScriptPath)
+        $ProgressFile = Join-Path (Split-Path $CallingScriptPath) "$($ScriptName)_Progress.txt"
+
+        $ID | Set-Content -Path $ProgressFile -Force
+        
+        Write-Log "Progress updated: Step $ID" -Level INFO
+    }
+    catch {
+        Write-Log "Failed to update progress file: $($_.Exception.Message)" -Level WARN
+    }
+}
+
 function Start-Step {
     <#
     .SYNOPSIS
@@ -44,25 +71,16 @@ function Start-Step {
         [string]$ProgressFile # Passed from Confirm-StepExecution
     )
     
-    # Priority 1: Manual Force Parameter (Global variable override)
-    if ($global:ForceStep -gt 0) {
-        if ($ID -lt $global:ForceStep) {
-            Write-Log "SKIPPING Step ${ID}: $Name (Forced start at $global:ForceStep)" -Level INFO
-            return $false
-        }
+    # Progress File (Persistence check)
+    $LastID = 0
+    if (Test-Path $ProgressFile) { 
+        $content = Get-Content $ProgressFile -ErrorAction SilentlyContinue
+        if ($content -as [int]) { $LastID = [int]$content }
     }
-    # Priority 2: Progress File (Persistence check)
-    else {
-        $LastID = 0
-        if (Test-Path $ProgressFile) { 
-            $content = Get-Content $ProgressFile -ErrorAction SilentlyContinue
-            if ($content -as [int]) { $LastID = [int]$content }
-        }
 
-        if ($ID -lt $LastID) {
-            Write-Log "SKIPPING Step ${ID}: $Name (Already completed according to progress file)" -Level INFO
-            return $false
-        }
+    if ($ID -lt $LastID) {
+        Write-Log "SKIPPING Step ${ID}: $Name (Already completed according to progress file)" -Level INFO
+        return $false
     }
 
     # Visual Output for the current Step

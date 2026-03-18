@@ -13,81 +13,54 @@ foreach ($File in $Dependencies) {
     }
 }
 
+$GLOBAL_NVIDIA_DRIVER_DB = ".\NvidiaDriverMasterData.json"
+
 # Vendor ID (VID)
 $GLOBAL_VID_NVIDIA = "10DE"
 
 # Global Mapping for NVIDIA Driver API osID parameter
 # Matches internal IDs used by NVIDIA AjaxDriverService.php
 $GLOBAL_NVIDIA_OS_IDS = @{
-    [WindowsVersionKey]::WIN11    = 135
-    [WindowsVersionKey]::WIN10_64 = 57
-    [WindowsVersionKey]::WIN10_32 = 56
-    [WindowsVersionKey]::SRV2022  = 138
-    [WindowsVersionKey]::SRV2019  = 113
+    # --- Windows 11 & 10 ---
+    [WindowsVersionKey]::WIN11          = 135
+    [WindowsVersionKey]::WIN10_64       = 57
+    [WindowsVersionKey]::WIN10_32       = 56
+
+    # --- Windows 8.1 & 8 ---
+    [WindowsVersionKey]::WIN81_64       = 41
+    [WindowsVersionKey]::WIN81_32       = 40
+    [WindowsVersionKey]::WIN8_64        = 35
+    [WindowsVersionKey]::WIN8_32        = 34
+
+    # --- Windows 7 ---
+    [WindowsVersionKey]::WIN7_64        = 19
+    [WindowsVersionKey]::WIN7_32        = 18
+
+    # --- Windows Server (Modern) ---
+    [WindowsVersionKey]::SRV2025        = 141
+    [WindowsVersionKey]::SRV2022        = 138
+    [WindowsVersionKey]::SRV2019        = 113
+    [WindowsVersionKey]::SRV2016        = 79
+
+    # --- Windows Server (Legacy) ---
+    [WindowsVersionKey]::SRV2012_R2     = 43
+    [WindowsVersionKey]::SRV2012        = 37
+    [WindowsVersionKey]::SRV2008_R2     = 25
+    [WindowsVersionKey]::SRV2008_64     = 23
+    [WindowsVersionKey]::SRV2008_32     = 22
 }
 
-$GLOBAL_NVIDIA_OS_MAP = @{
-    [WindowsVersionKey]::WIN11    = "win10-win11"
-    [WindowsVersionKey]::WIN10_64 = "win10-win11"
-    [WindowsVersionKey]::WIN10_32 = "win10"
-    [WindowsVersionKey]::SRV2022  = "server2019-server2022"
-    [WindowsVersionKey]::SRV2019  = "server2019-server2022"
-    [WindowsVersionKey]::UNKNOWN  = "win10-win11"
+enum NvidiaHardwareCategory {
+    Tier
+    Mobile
+    Special
 }
 
-# This map links the Hardware Device ID (DEV_XXXX) to the specific 
-# Nvidia Product Family ID (PFID) required for their Ajax Driver API.
-$GLOBAL_NVIDIA_PID_MAP = @{
-    # --- RTX 50 Series (Blackwell) ---
-    "2D01" = "1045"; # RTX 5090
-    "2D02" = "1047"; # RTX 5080
-    
-    # --- RTX 40 Series (Ada Lovelace) ---
-    "2684" = "1005"; # RTX 4090
-    "2704" = "1013"; # RTX 4080
-    "2703" = "1013"; # RTX 4080 Super
-    "2782" = "973";  # RTX 4070 Ti
-    "2706" = "973";  # RTX 4070
-    "2786" = "967";  # RTX 4070 Super
-    "2811" = "957";  # RTX 4060 Ti
-    "2882" = "956";  # RTX 4060
-    
-    # --- RTX 30 Series (Ampere) ---
-    "2204" = "933";  # RTX 3090
-    "2208" = "933";  # RTX 3090 Ti
-    "2206" = "929";  # RTX 3080
-    "2216" = "929";  # RTX 3080 Ti
-    "220A" = "929";  # RTX 3080 12GB
-    "2484" = "911";  # RTX 3070
-    "2488" = "911";  # RTX 3070 Ti
-    "2486" = "903";  # RTX 3060 Ti
-    "2503" = "903";  # RTX 3060
-    "2504" = "903";  # RTX 3060 (LHR)
-
-    # --- RTX 20 Series (Turing) ---
-    "1E04" = "845";  # RTX 2080 Ti
-    "1E07" = "845";  # RTX 2080 Super
-    "1E82" = "834";  # RTX 2080
-    "1E87" = "834";  # RTX 2070 Super
-    "1F02" = "834";  # RTX 2070
-
-    # --- GTX 10 Series (Pascal) ---
-    "1B80" = "815";  # GTX 1080
-    "1B81" = "815";  # GTX 1070
-    "1B82" = "821";  # GTX 1080 Ti
-    "1B83" = "815";  # GTX 1070 Ti
-    "1C02" = "816";  # GTX 1060 3GB
-    "1C03" = "816";  # GTX 1060 6GB
-    "1C81" = "818";  # GTX 1050
-    "1C82" = "818";  # GTX 1050 Ti
-
-    # --- GTX 900 Series (Maxwell) ---
-    "17C2" = "751";  # GTX TITAN X (Maxwell)
-    "17C8" = "751";  # GTX 980 Ti
-    "13C0" = "744";  # GTX 980
-    "13C2" = "744";  # GTX 970
-    "1401" = "747";  # GTX 960
-    "1402" = "747"   # GTX 950
+# Centralized mapping of Categories to their respective Flags
+$GLOBAL_NVIDIA_HW_FEATURES = [ordered]@{
+    [NvidiaHardwareCategory]::Tier    = @("Ti", "Super", "Ultra", "LE", "SE", "RTX", "GTX", "GT", "GTS")
+    [NvidiaHardwareCategory]::Mobile  = @("Mobile", "Laptop", "Max-Q", "Max-P")
+    [NvidiaHardwareCategory]::Special = @("Workstation", "Quadro", "NVS", "Tesla", "Grid")
 }
 
 # helpers
@@ -122,34 +95,138 @@ function Get-NvidiaApiOsId {
     return $FallbackId
 }
 
-function Get-NvidiaPfid {
+function Get-NvidiaDriverRequestMeta {
     <#
     .SYNOPSIS
-        Resolves the Hardware Device ID (PID) from a GPU object to an NVIDIA Product Family ID (PFID).
-    .PARAMETER Gpu
-        The CIM/WMI object of the video controller.
+        Matches identified hardware name against the local Nvidia driver database.
+    .DESCRIPTION
+        Uses tokenized keyword matching (Intersection) to find the best driver profile.
+        Includes categorical parity checks for strict matching.
     #>
     param (
         [Parameter(Mandatory=$true)]
-        $Gpu
+        [string]$VendorId,
+        [Parameter(Mandatory=$true)]
+        [string]$PrimaryName
     )
 
-    $fallbackPfid = "929" # Default fallback (RTX 3080/4080 family)
+    Write-Log "Starting metadata lookup for: $PrimaryName" -Level INFO
 
-    # Extract the DEV_XXXX part from the PNPDeviceID
-    if ($Gpu.PNPDeviceID -match "DEV_([A-F0-9]{4})") {
-        $devId = $Matches[1].ToUpper()
-        
-        if ($GLOBAL_NVIDIA_PID_MAP.ContainsKey($devId)) {
-            $pfid = $GLOBAL_NVIDIA_PID_MAP[$devId]
-            Write-Log "Hardware Match: $devId -> PFID: $pfid" -Level SUCCESS
-            return $pfid
-        } else {
-            Write-Log "Device ID [$devId] not in map. Using fallback PFID: $fallbackPfid" -Level WARN
-            return $fallbackPfid
-        }
+    # --- STAGE 1: Vendor Validation ---
+    if ($VendorId -ne $GLOBAL_VID_NVIDIA) {
+        Write-Log "Result: Skipping lookup. Vendor ID [$VendorId] does not match NVIDIA ($GLOBAL_VID_NVIDIA)." -Level WARN
+        return $null
     }
 
-    Write-Log "Could not extract Device ID from PNPDeviceID. Using fallback: $fallbackPfid" -Level ERROR
-    return $fallbackPfid
+    # --- STAGE 2: Database Check ---
+    $JsonPath = Join-Path $PSScriptRoot "$GLOBAL_NVIDIA_DRIVER_DB"
+    if (!(Test-Path $JsonPath)) {
+        Write-Log "Result: Aborted. Driver Database file not found at: $JsonPath" -Level ERROR
+        return $null
+    }
+
+    # Helper function to extract relevant tokens
+    $ExtractTokens = {
+        param($String)
+        $Clean = $String -replace "[^a-zA-Z0-9]", " "
+        $Parts = $Clean.Split(" ", [System.StringSplitOptions]::RemoveEmptyEntries)
+        return $Parts | Where-Object { 
+            $_.Length -gt 1 -and 
+            $_ -notmatch "^(NVIDIA|Corporation|GeForce|Graphics|Driver|Series|Product|Video|Controller|Adapter)$" 
+        } | ForEach-Object { $_.ToLower().Trim() }
+    }
+
+    # Helper: Check for a flag with word boundaries
+    $HasFlag = {
+        param($InputString, $Flag)
+        if ($Flag -eq "M") { return $InputString -match "M$" }
+        return $InputString -match "\b$Flag\b"
+    }
+
+    try {
+        $MasterData = Get-Content $JsonPath -Raw | ConvertFrom-Json
+        
+        # --- STAGE 3: Categorized Feature Detection (Input) ---
+        $InputFeatureMap = @{}
+        foreach ($Category in [NvidiaHardwareCategory]::GetValues([NvidiaHardwareCategory])) {
+            foreach ($Flag in $GLOBAL_NVIDIA_HW_FEATURES[$Category]) {
+                if (&$HasFlag -InputString $PrimaryName -Flag $Flag) {
+                    $InputFeatureMap[$Flag] = $true
+                }
+            }
+        }
+        
+        $IsMobileIn = ($InputFeatureMap.Keys | Where-Object { $GLOBAL_NVIDIA_HW_FEATURES[[NvidiaHardwareCategory]::Mobile] -contains $_ }) -ne $null -or ($PrimaryName -match "M$")
+        $SourceTokens = &$ExtractTokens -String $PrimaryName
+        
+        Write-Log "Input Features: [$($InputFeatureMap.Keys -join ', ')] (Mobile: $IsMobileIn)" -Level INFO -SubStep
+        Write-Log "Search Tokens: [$($SourceTokens -join ', ')]" -Level INFO -SubStep
+
+        $BestMatch = $null
+        $MaxScore = 0
+
+        # --- STAGE 4: Strict Filtering Loop ---
+        foreach ($Entry in $MasterData) {
+            $EntryName = $Entry.name
+            $Mismatch = $false
+
+            # MANDATORY CATEGORICAL PARITY CHECK
+            foreach ($Category in [NvidiaHardwareCategory]::GetValues([NvidiaHardwareCategory])) {
+                foreach ($Flag in $GLOBAL_NVIDIA_HW_FEATURES[$Category]) {
+                    $InHasFlag    = $InputFeatureMap.ContainsKey($Flag)
+                    $EntryHasFlag = &$HasFlag -InputString $EntryName -Flag $Flag
+
+                    if ($InHasFlag -ne $EntryHasFlag) {
+                        $Mismatch = $true
+                        break
+                    }
+                }
+                if ($Mismatch) { break }
+            }
+
+            # Additional legacy M check
+            if (!$Mismatch -and ($PrimaryName -match "M$") -ne ($EntryName -match "M$")) { $Mismatch = $true }
+
+            if ($Mismatch) { continue }
+
+            # --- STAGE 5: Scoring ---
+            $TargetTokens = &$ExtractTokens -String $EntryName
+            $Common = $SourceTokens | Where-Object { $TargetTokens -contains $_ }
+            
+            $Score = ($Common | Measure-Object).Count
+            foreach ($Token in $Common) {
+                if ($Token -match "\d{3,4}") { $Score += 5 }
+                if ($Token -match "\d+gb")    { $Score += 3 }
+            }
+
+            # --- STAGE 6: Selection & Tie-Breaking ---
+            if ($Score -gt $MaxScore) {
+                $MaxScore = $Score
+                $BestMatch = $Entry
+            }
+            elseif ($Score -eq $MaxScore -and $null -ne $BestMatch) {
+                $CurrentBestTokens = &$ExtractTokens -String $BestMatch.name
+                if ($TargetTokens.Count -lt $CurrentBestTokens.Count) {
+                    $BestMatch = $Entry
+                }
+            }
+        }
+
+        # --- STAGE 7: Final Validation ---
+        if ($BestMatch -and $MaxScore -ge 5) {
+            $Result = $BestMatch | Select-Object *
+            $Result | Add-Member -MemberType NoteProperty -Name "IsMobile" -Value ([bool]$IsMobileIn) -Force
+            $Result | Add-Member -MemberType NoteProperty -Name "MatchScore" -Value $MaxScore -Force
+
+            Write-Log "Result: Successfully matched to '$($Result.name)'" -Level SUCCESS
+            return $Result
+        } else {
+            Write-Log "Result: No specific match found for [$PrimaryName] with required features." -Level WARN
+        }
+
+    } catch {
+        Write-Log "Result: Error in pattern matching - $($_.Exception.Message)" -Level ERROR
+    }
+
+    return $null
 }

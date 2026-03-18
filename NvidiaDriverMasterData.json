@@ -1,0 +1,3026 @@
+[
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 50 Series (Notebooks)",
+    "psid": 133,
+    "name": "NVIDIA GeForce RTX 5090 Laptop GPU",
+    "pfid": 1073,
+    "search_string": "1|133|1073"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 50 Series (Notebooks)",
+    "psid": 133,
+    "name": "NVIDIA GeForce RTX 5080 Laptop GPU",
+    "pfid": 1074,
+    "search_string": "1|133|1074"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 50 Series (Notebooks)",
+    "psid": 133,
+    "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "pfid": 1075,
+    "search_string": "1|133|1075"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 50 Series (Notebooks)",
+    "psid": 133,
+    "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+    "pfid": 1077,
+    "search_string": "1|133|1077"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 50 Series (Notebooks)",
+    "psid": 133,
+    "name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "pfid": 1079,
+    "search_string": "1|133|1079"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 50 Series (Notebooks)",
+    "psid": 133,
+    "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "pfid": 1091,
+    "search_string": "1|133|1091"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 50 Series",
+    "psid": 131,
+    "name": "NVIDIA GeForce RTX 5090 D v2",
+    "pfid": 1092,
+    "search_string": "1|131|1092"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 50 Series",
+    "psid": 131,
+    "name": "NVIDIA GeForce RTX 5090 D",
+    "pfid": 1067,
+    "search_string": "1|131|1067"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 50 Series",
+    "psid": 131,
+    "name": "NVIDIA GeForce RTX 5090",
+    "pfid": 1066,
+    "search_string": "1|131|1066"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 50 Series",
+    "psid": 131,
+    "name": "NVIDIA GeForce RTX 5080",
+    "pfid": 1065,
+    "search_string": "1|131|1065"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 50 Series",
+    "psid": 131,
+    "name": "NVIDIA GeForce RTX 5070 Ti",
+    "pfid": 1068,
+    "search_string": "1|131|1068"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 50 Series",
+    "psid": 131,
+    "name": "NVIDIA GeForce RTX 5070",
+    "pfid": 1070,
+    "search_string": "1|131|1070"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 50 Series",
+    "psid": 131,
+    "name": "NVIDIA GeForce RTX 5060 Ti",
+    "pfid": 1076,
+    "search_string": "1|131|1076"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 50 Series",
+    "psid": 131,
+    "name": "NVIDIA GeForce RTX 5060",
+    "pfid": 1078,
+    "search_string": "1|131|1078"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 50 Series",
+    "psid": 131,
+    "name": "NVIDIA GeForce RTX 5050",
+    "pfid": 1090,
+    "search_string": "1|131|1090"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 40 Series (Notebooks)",
+    "psid": 129,
+    "name": "GeForce RTX 4090 Laptop GPU",
+    "pfid": 1004,
+    "search_string": "1|129|1004"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 40 Series (Notebooks)",
+    "psid": 129,
+    "name": "GeForce RTX 4080 Laptop GPU",
+    "pfid": 1005,
+    "search_string": "1|129|1005"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 40 Series (Notebooks)",
+    "psid": 129,
+    "name": "GeForce RTX 4070 Laptop GPU",
+    "pfid": 1006,
+    "search_string": "1|129|1006"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 40 Series (Notebooks)",
+    "psid": 129,
+    "name": "GeForce RTX 4060 Laptop GPU",
+    "pfid": 1007,
+    "search_string": "1|129|1007"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 40 Series (Notebooks)",
+    "psid": 129,
+    "name": "GeForce RTX 4050 Laptop GPU",
+    "pfid": 1008,
+    "search_string": "1|129|1008"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 40 Series",
+    "psid": 127,
+    "name": "NVIDIA GeForce RTX 4090 D",
+    "pfid": 1036,
+    "search_string": "1|127|1036"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 40 Series",
+    "psid": 127,
+    "name": "NVIDIA GeForce RTX 4090",
+    "pfid": 995,
+    "search_string": "1|127|995"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 40 Series",
+    "psid": 127,
+    "name": "NVIDIA GeForce RTX 4080 SUPER",
+    "pfid": 1041,
+    "search_string": "1|127|1041"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 40 Series",
+    "psid": 127,
+    "name": "NVIDIA GeForce RTX 4080",
+    "pfid": 999,
+    "search_string": "1|127|999"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 40 Series",
+    "psid": 127,
+    "name": "NVIDIA GeForce RTX 4070 Ti SUPER",
+    "pfid": 1040,
+    "search_string": "1|127|1040"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 40 Series",
+    "psid": 127,
+    "name": "NVIDIA GeForce RTX 4070 Ti",
+    "pfid": 1001,
+    "search_string": "1|127|1001"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 40 Series",
+    "psid": 127,
+    "name": "NVIDIA GeForce RTX 4070 SUPER",
+    "pfid": 1039,
+    "search_string": "1|127|1039"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 40 Series",
+    "psid": 127,
+    "name": "NVIDIA GeForce RTX 4070",
+    "pfid": 1015,
+    "search_string": "1|127|1015"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 40 Series",
+    "psid": 127,
+    "name": "NVIDIA GeForce RTX 4060 Ti",
+    "pfid": 1022,
+    "search_string": "1|127|1022"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 40 Series",
+    "psid": 127,
+    "name": "NVIDIA GeForce RTX 4060",
+    "pfid": 1023,
+    "search_string": "1|127|1023"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 30 Series (Notebooks)",
+    "psid": 123,
+    "name": "GeForce RTX 3080 Ti Laptop GPU",
+    "pfid": 976,
+    "search_string": "1|123|976"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 30 Series (Notebooks)",
+    "psid": 123,
+    "name": "GeForce RTX 3080 Laptop GPU",
+    "pfid": 938,
+    "search_string": "1|123|938"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 30 Series (Notebooks)",
+    "psid": 123,
+    "name": "GeForce RTX 3070 Ti Laptop GPU",
+    "pfid": 979,
+    "search_string": "1|123|979"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 30 Series (Notebooks)",
+    "psid": 123,
+    "name": "GeForce RTX 3070 Laptop GPU",
+    "pfid": 939,
+    "search_string": "1|123|939"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 30 Series (Notebooks)",
+    "psid": 123,
+    "name": "GeForce RTX 3060 Laptop GPU",
+    "pfid": 940,
+    "search_string": "1|123|940"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 30 Series (Notebooks)",
+    "psid": 123,
+    "name": "GeForce RTX 3050 Ti Laptop GPU",
+    "pfid": 962,
+    "search_string": "1|123|962"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 30 Series (Notebooks)",
+    "psid": 123,
+    "name": "GeForce RTX 3050 Laptop GPU",
+    "pfid": 963,
+    "search_string": "1|123|963"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 30 Series",
+    "psid": 120,
+    "name": "GeForce RTX 3090 Ti",
+    "pfid": 985,
+    "search_string": "1|120|985"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 30 Series",
+    "psid": 120,
+    "name": "GeForce RTX 3090",
+    "pfid": 930,
+    "search_string": "1|120|930"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 30 Series",
+    "psid": 120,
+    "name": "GeForce RTX 3080 Ti",
+    "pfid": 964,
+    "search_string": "1|120|964"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 30 Series",
+    "psid": 120,
+    "name": "GeForce RTX 3080",
+    "pfid": 929,
+    "search_string": "1|120|929"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 30 Series",
+    "psid": 120,
+    "name": "GeForce RTX 3070 Ti",
+    "pfid": 965,
+    "search_string": "1|120|965"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 30 Series",
+    "psid": 120,
+    "name": "GeForce RTX 3070",
+    "pfid": 933,
+    "search_string": "1|120|933"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 30 Series",
+    "psid": 120,
+    "name": "GeForce RTX 3060 Ti",
+    "pfid": 934,
+    "search_string": "1|120|934"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 30 Series",
+    "psid": 120,
+    "name": "GeForce RTX 3060",
+    "pfid": 942,
+    "search_string": "1|120|942"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 30 Series",
+    "psid": 120,
+    "name": "GeForce RTX 3050",
+    "pfid": 975,
+    "search_string": "1|120|975"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 20 Series (Notebooks)",
+    "psid": 111,
+    "name": "GeForce RTX 2080 SUPER",
+    "pfid": 919,
+    "search_string": "1|111|919"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 20 Series (Notebooks)",
+    "psid": 111,
+    "name": "GeForce RTX 2080",
+    "pfid": 890,
+    "search_string": "1|111|890"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 20 Series (Notebooks)",
+    "psid": 111,
+    "name": "GeForce RTX 2070 SUPER",
+    "pfid": 920,
+    "search_string": "1|111|920"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 20 Series (Notebooks)",
+    "psid": 111,
+    "name": "GeForce RTX 2070",
+    "pfid": 889,
+    "search_string": "1|111|889"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 20 Series (Notebooks)",
+    "psid": 111,
+    "name": "GeForce RTX 2060",
+    "pfid": 888,
+    "search_string": "1|111|888"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 20 Series (Notebooks)",
+    "psid": 111,
+    "name": "GeForce RTX 2050",
+    "pfid": 978,
+    "search_string": "1|111|978"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 20 Series",
+    "psid": 107,
+    "name": "GeForce RTX 2080 Ti",
+    "pfid": 877,
+    "search_string": "1|107|877"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 20 Series",
+    "psid": 107,
+    "name": "GeForce RTX 2080 SUPER",
+    "pfid": 904,
+    "search_string": "1|107|904"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 20 Series",
+    "psid": 107,
+    "name": "GeForce RTX 2080",
+    "pfid": 879,
+    "search_string": "1|107|879"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 20 Series",
+    "psid": 107,
+    "name": "GeForce RTX 2070 SUPER",
+    "pfid": 903,
+    "search_string": "1|107|903"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 20 Series",
+    "psid": 107,
+    "name": "GeForce RTX 2070",
+    "pfid": 880,
+    "search_string": "1|107|880"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 20 Series",
+    "psid": 107,
+    "name": "GeForce RTX 2060 SUPER",
+    "pfid": 902,
+    "search_string": "1|107|902"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce RTX 20 Series",
+    "psid": 107,
+    "name": "GeForce RTX 2060",
+    "pfid": 887,
+    "search_string": "1|107|887"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce MX500 Series (Notebooks)",
+    "psid": 125,
+    "name": "GeForce MX570",
+    "pfid": 977,
+    "search_string": "1|125|977"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce MX500 Series (Notebooks)",
+    "psid": 125,
+    "name": "GeForce MX550",
+    "pfid": 974,
+    "search_string": "1|125|974"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce MX400 Series (Notebooks)",
+    "psid": 121,
+    "name": "GeForce MX450",
+    "pfid": 931,
+    "search_string": "1|121|931"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce MX300 Series (Notebooks)",
+    "psid": 117,
+    "name": "GeForce MX350",
+    "pfid": 918,
+    "search_string": "1|117|918"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce MX300 Series (Notebooks)",
+    "psid": 117,
+    "name": "GeForce MX330",
+    "pfid": 917,
+    "search_string": "1|117|917"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce MX200 Series (Notebooks)",
+    "psid": 113,
+    "name": "GeForce MX250",
+    "pfid": 894,
+    "search_string": "1|113|894"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce MX200 Series (Notebooks)",
+    "psid": 113,
+    "name": "GeForce MX230",
+    "pfid": 893,
+    "search_string": "1|113|893"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce MX100 Series (Notebook)",
+    "psid": 104,
+    "name": "GeForce MX150",
+    "pfid": 853,
+    "search_string": "1|104|853"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce MX100 Series (Notebook)",
+    "psid": 104,
+    "name": "GeForce MX130",
+    "pfid": 862,
+    "search_string": "1|104|862"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce MX100 Series (Notebook)",
+    "psid": 104,
+    "name": "GeForce MX110",
+    "pfid": 863,
+    "search_string": "1|104|863"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce GTX 16 Series (Notebooks)",
+    "psid": 115,
+    "name": "GeForce GTX 1660 Ti",
+    "pfid": 899,
+    "search_string": "1|115|899"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce GTX 16 Series (Notebooks)",
+    "psid": 115,
+    "name": "GeForce GTX 1650 Ti",
+    "pfid": 921,
+    "search_string": "1|115|921"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce GTX 16 Series (Notebooks)",
+    "psid": 115,
+    "name": "GeForce GTX 1650",
+    "pfid": 898,
+    "search_string": "1|115|898"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 16 Series",
+    "psid": 112,
+    "name": "GeForce GTX 1660 SUPER",
+    "pfid": 910,
+    "search_string": "1|112|910"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 16 Series",
+    "psid": 112,
+    "name": "GeForce GTX 1650 SUPER",
+    "pfid": 911,
+    "search_string": "1|112|911"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 16 Series",
+    "psid": 112,
+    "name": "GeForce GTX 1660 Ti",
+    "pfid": 892,
+    "search_string": "1|112|892"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 16 Series",
+    "psid": 112,
+    "name": "GeForce GTX 1660",
+    "pfid": 895,
+    "search_string": "1|112|895"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 16 Series",
+    "psid": 112,
+    "name": "GeForce GTX 1650",
+    "pfid": 897,
+    "search_string": "1|112|897"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 16 Series",
+    "psid": 112,
+    "name": "GeForce GTX 1630",
+    "pfid": 993,
+    "search_string": "1|112|993"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 10 Series",
+    "psid": 101,
+    "name": "GeForce GTX 1080 Ti",
+    "pfid": 845,
+    "search_string": "1|101|845"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 10 Series",
+    "psid": 101,
+    "name": "GeForce GTX 1080",
+    "pfid": 815,
+    "search_string": "1|101|815"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 10 Series",
+    "psid": 101,
+    "name": "GeForce GTX 1070 Ti",
+    "pfid": 859,
+    "search_string": "1|101|859"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 10 Series",
+    "psid": 101,
+    "name": "GeForce GTX 1070",
+    "pfid": 816,
+    "search_string": "1|101|816"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 10 Series",
+    "psid": 101,
+    "name": "GeForce GTX 1060",
+    "pfid": 817,
+    "search_string": "1|101|817"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 10 Series",
+    "psid": 101,
+    "name": "GeForce GTX 1050 Ti",
+    "pfid": 825,
+    "search_string": "1|101|825"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 10 Series",
+    "psid": 101,
+    "name": "GeForce GTX 1050",
+    "pfid": 826,
+    "search_string": "1|101|826"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 10 Series",
+    "psid": 101,
+    "name": "GeForce GT 1030",
+    "pfid": 852,
+    "search_string": "1|101|852"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 10 Series",
+    "psid": 101,
+    "name": "GeForce GT 1010",
+    "pfid": 936,
+    "search_string": "1|101|936"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 10 Series (Notebooks)",
+    "psid": 102,
+    "name": "GeForce GTX 1080",
+    "pfid": 819,
+    "search_string": "1|102|819"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 10 Series (Notebooks)",
+    "psid": 102,
+    "name": "GeForce GTX 1070",
+    "pfid": 820,
+    "search_string": "1|102|820"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 10 Series (Notebooks)",
+    "psid": 102,
+    "name": "GeForce GTX 1060",
+    "pfid": 821,
+    "search_string": "1|102|821"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 10 Series (Notebooks)",
+    "psid": 102,
+    "name": "GeForce GTX 1050 Ti",
+    "pfid": 836,
+    "search_string": "1|102|836"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 10 Series (Notebooks)",
+    "psid": 102,
+    "name": "GeForce GTX 1050",
+    "pfid": 837,
+    "search_string": "1|102|837"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900 Series",
+    "psid": 98,
+    "name": "GeForce GTX 980 Ti",
+    "pfid": 778,
+    "search_string": "1|98|778"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900 Series",
+    "psid": 98,
+    "name": "GeForce GTX 980",
+    "pfid": 755,
+    "search_string": "1|98|755"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900 Series",
+    "psid": 98,
+    "name": "GeForce GTX 970",
+    "pfid": 756,
+    "search_string": "1|98|756"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900 Series",
+    "psid": 98,
+    "name": "GeForce GTX 960",
+    "pfid": 764,
+    "search_string": "1|98|764"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900 Series",
+    "psid": 98,
+    "name": "GeForce GTX 950",
+    "pfid": 782,
+    "search_string": "1|98|782"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900M Series (Notebooks)",
+    "psid": 99,
+    "name": "GeForce GTX 980",
+    "pfid": 785,
+    "search_string": "1|99|785"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900M Series (Notebooks)",
+    "psid": 99,
+    "name": "GeForce GTX 980M",
+    "pfid": 757,
+    "search_string": "1|99|757"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900M Series (Notebooks)",
+    "psid": 99,
+    "name": "GeForce GTX 970M",
+    "pfid": 758,
+    "search_string": "1|99|758"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900M Series (Notebooks)",
+    "psid": 99,
+    "name": "GeForce GTX 965M",
+    "pfid": 765,
+    "search_string": "1|99|765"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900M Series (Notebooks)",
+    "psid": 99,
+    "name": "GeForce GTX 960M",
+    "pfid": 769,
+    "search_string": "1|99|769"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900M Series (Notebooks)",
+    "psid": 99,
+    "name": "GeForce GTX 950M",
+    "pfid": 770,
+    "search_string": "1|99|770"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900M Series (Notebooks)",
+    "psid": 99,
+    "name": "GeForce 945M",
+    "pfid": 795,
+    "search_string": "1|99|795"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900M Series (Notebooks)",
+    "psid": 99,
+    "name": "GeForce 940MX",
+    "pfid": 796,
+    "search_string": "1|99|796"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900M Series (Notebooks)",
+    "psid": 99,
+    "name": "GeForce 930MX",
+    "pfid": 807,
+    "search_string": "1|99|807"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900M Series (Notebooks)",
+    "psid": 99,
+    "name": "GeForce 920MX",
+    "pfid": 808,
+    "search_string": "1|99|808"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900M Series (Notebooks)",
+    "psid": 99,
+    "name": "GeForce 940M",
+    "pfid": 771,
+    "search_string": "1|99|771"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900M Series (Notebooks)",
+    "psid": 99,
+    "name": "GeForce 930M",
+    "pfid": 772,
+    "search_string": "1|99|772"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900M Series (Notebooks)",
+    "psid": 99,
+    "name": "GeForce 920M",
+    "pfid": 773,
+    "search_string": "1|99|773"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 900M Series (Notebooks)",
+    "psid": 99,
+    "name": "GeForce 910M",
+    "pfid": 779,
+    "search_string": "1|99|779"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 800M Series (Notebooks)",
+    "psid": 97,
+    "name": "GeForce GTX 880M",
+    "pfid": 734,
+    "search_string": "1|97|734"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 800M Series (Notebooks)",
+    "psid": 97,
+    "name": "GeForce GTX 870M",
+    "pfid": 735,
+    "search_string": "1|97|735"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 800M Series (Notebooks)",
+    "psid": 97,
+    "name": "GeForce GTX 860M",
+    "pfid": 736,
+    "search_string": "1|97|736"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 800M Series (Notebooks)",
+    "psid": 97,
+    "name": "GeForce GTX 850M",
+    "pfid": 737,
+    "search_string": "1|97|737"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 800M Series (Notebooks)",
+    "psid": 97,
+    "name": "GeForce 845M",
+    "pfid": 805,
+    "search_string": "1|97|805"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 800M Series (Notebooks)",
+    "psid": 97,
+    "name": "GeForce 840M",
+    "pfid": 738,
+    "search_string": "1|97|738"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 800M Series (Notebooks)",
+    "psid": 97,
+    "name": "GeForce 830M",
+    "pfid": 739,
+    "search_string": "1|97|739"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 800M Series (Notebooks)",
+    "psid": 97,
+    "name": "GeForce 825M",
+    "pfid": 804,
+    "search_string": "1|97|804"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 800M Series (Notebooks)",
+    "psid": 97,
+    "name": "GeForce 820M",
+    "pfid": 726,
+    "search_string": "1|97|726"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 800M Series (Notebooks)",
+    "psid": 97,
+    "name": "GeForce 810M",
+    "pfid": 759,
+    "search_string": "1|97|759"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 800M Series (Notebooks)",
+    "psid": 97,
+    "name": "GeForce 800M",
+    "pfid": 797,
+    "search_string": "1|97|797"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700M Series (Notebooks)",
+    "psid": 92,
+    "name": "GeForce GTX 780M",
+    "pfid": 700,
+    "search_string": "1|92|700"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700M Series (Notebooks)",
+    "psid": 92,
+    "name": "GeForce GTX 775M",
+    "pfid": 740,
+    "search_string": "1|92|740"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700M Series (Notebooks)",
+    "psid": 92,
+    "name": "GeForce GTX 770M",
+    "pfid": 702,
+    "search_string": "1|92|702"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700M Series (Notebooks)",
+    "psid": 92,
+    "name": "GeForce GTX 765M",
+    "pfid": 701,
+    "search_string": "1|92|701"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700M Series (Notebooks)",
+    "psid": 92,
+    "name": "GeForce GTX 760M",
+    "pfid": 699,
+    "search_string": "1|92|699"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700M Series (Notebooks)",
+    "psid": 92,
+    "name": "GeForce GT 755M",
+    "pfid": 707,
+    "search_string": "1|92|707"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700M Series (Notebooks)",
+    "psid": 92,
+    "name": "GeForce GT 750M",
+    "pfid": 690,
+    "search_string": "1|92|690"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700M Series (Notebooks)",
+    "psid": 92,
+    "name": "GeForce GT 745M",
+    "pfid": 689,
+    "search_string": "1|92|689"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700M Series (Notebooks)",
+    "psid": 92,
+    "name": "GeForce GT 740M",
+    "pfid": 686,
+    "search_string": "1|92|686"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700M Series (Notebooks)",
+    "psid": 92,
+    "name": "GeForce GT 735M",
+    "pfid": 688,
+    "search_string": "1|92|688"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700M Series (Notebooks)",
+    "psid": 92,
+    "name": "GeForce GT 730M",
+    "pfid": 672,
+    "search_string": "1|92|672"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700M Series (Notebooks)",
+    "psid": 92,
+    "name": "GeForce GT 720M",
+    "pfid": 687,
+    "search_string": "1|92|687"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700M Series (Notebooks)",
+    "psid": 92,
+    "name": "GeForce GT 710M",
+    "pfid": 798,
+    "search_string": "1|92|798"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700M Series (Notebooks)",
+    "psid": 92,
+    "name": "GeForce 720M",
+    "pfid": 803,
+    "search_string": "1|92|803"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700M Series (Notebooks)",
+    "psid": 92,
+    "name": "GeForce 710M",
+    "pfid": 680,
+    "search_string": "1|92|680"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700M Series (Notebooks)",
+    "psid": 92,
+    "name": "GeForce 705M",
+    "pfid": 775,
+    "search_string": "1|92|775"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700 Series",
+    "psid": 95,
+    "name": "GeForce GTX 780 Ti",
+    "pfid": 712,
+    "search_string": "1|95|712"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700 Series",
+    "psid": 95,
+    "name": "GeForce GTX 780",
+    "pfid": 691,
+    "search_string": "1|95|691"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700 Series",
+    "psid": 95,
+    "name": "GeForce GTX 770",
+    "pfid": 694,
+    "search_string": "1|95|694"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700 Series",
+    "psid": 95,
+    "name": "GeForce GTX 760",
+    "pfid": 703,
+    "search_string": "1|95|703"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700 Series",
+    "psid": 95,
+    "name": "GeForce GTX 760 Ti (OEM)",
+    "pfid": 711,
+    "search_string": "1|95|711"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700 Series",
+    "psid": 95,
+    "name": "GeForce GTX 750 Ti",
+    "pfid": 727,
+    "search_string": "1|95|727"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700 Series",
+    "psid": 95,
+    "name": "GeForce GTX 750",
+    "pfid": 728,
+    "search_string": "1|95|728"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700 Series",
+    "psid": 95,
+    "name": "GeForce GTX 745",
+    "pfid": 730,
+    "search_string": "1|95|730"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700 Series",
+    "psid": 95,
+    "name": "GeForce GT 740",
+    "pfid": 745,
+    "search_string": "1|95|745"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700 Series",
+    "psid": 95,
+    "name": "GeForce GT 730",
+    "pfid": 746,
+    "search_string": "1|95|746"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700 Series",
+    "psid": 95,
+    "name": "GeForce GT 720",
+    "pfid": 754,
+    "search_string": "1|95|754"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700 Series",
+    "psid": 95,
+    "name": "GeForce GT 710",
+    "pfid": 742,
+    "search_string": "1|95|742"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 700 Series",
+    "psid": 95,
+    "name": "GeForce GT 705",
+    "pfid": 761,
+    "search_string": "1|95|761"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600 Series",
+    "psid": 85,
+    "name": "GeForce GTX 690",
+    "pfid": 627,
+    "search_string": "1|85|627"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600 Series",
+    "psid": 85,
+    "name": "GeForce GTX 680",
+    "pfid": 610,
+    "search_string": "1|85|610"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600 Series",
+    "psid": 85,
+    "name": "GeForce GTX 670",
+    "pfid": 629,
+    "search_string": "1|85|629"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600 Series",
+    "psid": 85,
+    "name": "GeForce GTX 660 Ti",
+    "pfid": 653,
+    "search_string": "1|85|653"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600 Series",
+    "psid": 85,
+    "name": "GeForce GTX 660",
+    "pfid": 660,
+    "search_string": "1|85|660"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600 Series",
+    "psid": 85,
+    "name": "GeForce GTX 650 Ti BOOST",
+    "pfid": 683,
+    "search_string": "1|85|683"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600 Series",
+    "psid": 85,
+    "name": "GeForce GTX 650 Ti",
+    "pfid": 666,
+    "search_string": "1|85|666"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600 Series",
+    "psid": 85,
+    "name": "GeForce GTX 650",
+    "pfid": 661,
+    "search_string": "1|85|661"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600 Series",
+    "psid": 85,
+    "name": "GeForce GTX 645",
+    "pfid": 731,
+    "search_string": "1|85|731"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600 Series",
+    "psid": 85,
+    "name": "GeForce GT 645",
+    "pfid": 633,
+    "search_string": "1|85|633"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600 Series",
+    "psid": 85,
+    "name": "GeForce GT 640",
+    "pfid": 632,
+    "search_string": "1|85|632"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600 Series",
+    "psid": 85,
+    "name": "GeForce GT 635",
+    "pfid": 685,
+    "search_string": "1|85|685"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600 Series",
+    "psid": 85,
+    "name": "GeForce GT 630",
+    "pfid": 631,
+    "search_string": "1|85|631"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600 Series",
+    "psid": 85,
+    "name": "GeForce GT 625",
+    "pfid": 741,
+    "search_string": "1|85|741"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600 Series",
+    "psid": 85,
+    "name": "GeForce GT 620",
+    "pfid": 611,
+    "search_string": "1|85|611"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600 Series",
+    "psid": 85,
+    "name": "GeForce GT 610",
+    "pfid": 630,
+    "search_string": "1|85|630"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600 Series",
+    "psid": 85,
+    "name": "GeForce 605",
+    "pfid": 624,
+    "search_string": "1|85|624"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600M Series (Notebooks)",
+    "psid": 84,
+    "name": "GeForce GTX 680MX",
+    "pfid": 677,
+    "search_string": "1|84|677"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600M Series (Notebooks)",
+    "psid": 84,
+    "name": "GeForce GTX 680M",
+    "pfid": 646,
+    "search_string": "1|84|646"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600M Series (Notebooks)",
+    "psid": 84,
+    "name": "GeForce GTX 675MX",
+    "pfid": 664,
+    "search_string": "1|84|664"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600M Series (Notebooks)",
+    "psid": 84,
+    "name": "GeForce GTX 675M",
+    "pfid": 638,
+    "search_string": "1|84|638"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600M Series (Notebooks)",
+    "psid": 84,
+    "name": "GeForce GTX 670MX",
+    "pfid": 663,
+    "search_string": "1|84|663"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600M Series (Notebooks)",
+    "psid": 84,
+    "name": "GeForce GTX 670M",
+    "pfid": 639,
+    "search_string": "1|84|639"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600M Series (Notebooks)",
+    "psid": 84,
+    "name": "GeForce GTX 660M",
+    "pfid": 637,
+    "search_string": "1|84|637"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600M Series (Notebooks)",
+    "psid": 84,
+    "name": "GeForce GT 650M",
+    "pfid": 636,
+    "search_string": "1|84|636"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600M Series (Notebooks)",
+    "psid": 84,
+    "name": "GeForce GT 645M",
+    "pfid": 662,
+    "search_string": "1|84|662"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600M Series (Notebooks)",
+    "psid": 84,
+    "name": "GeForce GT 640M",
+    "pfid": 635,
+    "search_string": "1|84|635"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600M Series (Notebooks)",
+    "psid": 84,
+    "name": "GeForce GT 640M LE",
+    "pfid": 644,
+    "search_string": "1|84|644"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600M Series (Notebooks)",
+    "psid": 84,
+    "name": "GeForce GT 635M",
+    "pfid": 619,
+    "search_string": "1|84|619"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600M Series (Notebooks)",
+    "psid": 84,
+    "name": "GeForce GT 630M",
+    "pfid": 612,
+    "search_string": "1|84|612"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600M Series (Notebooks)",
+    "psid": 84,
+    "name": "GeForce GT 625M",
+    "pfid": 671,
+    "search_string": "1|84|671"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600M Series (Notebooks)",
+    "psid": 84,
+    "name": "GeForce GT 620M",
+    "pfid": 634,
+    "search_string": "1|84|634"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 600M Series (Notebooks)",
+    "psid": 84,
+    "name": "GeForce 610M",
+    "pfid": 620,
+    "search_string": "1|84|620"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 500M Series (Notebooks)",
+    "psid": 78,
+    "name": "GeForce GTX 580M",
+    "pfid": 601,
+    "search_string": "1|78|601"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 500M Series (Notebooks)",
+    "psid": 78,
+    "name": "GeForce GTX 570M",
+    "pfid": 603,
+    "search_string": "1|78|603"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 500M Series (Notebooks)",
+    "psid": 78,
+    "name": "GeForce GTX 560M",
+    "pfid": 561,
+    "search_string": "1|78|561"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 500M Series (Notebooks)",
+    "psid": 78,
+    "name": "GeForce GT 555M",
+    "pfid": 552,
+    "search_string": "1|78|552"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 500M Series (Notebooks)",
+    "psid": 78,
+    "name": "GeForce GT 550M",
+    "pfid": 551,
+    "search_string": "1|78|551"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 500M Series (Notebooks)",
+    "psid": 78,
+    "name": "GeForce GT 540M",
+    "pfid": 550,
+    "search_string": "1|78|550"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 500M Series (Notebooks)",
+    "psid": 78,
+    "name": "GeForce GT 525M",
+    "pfid": 549,
+    "search_string": "1|78|549"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 500M Series (Notebooks)",
+    "psid": 78,
+    "name": "GeForce GT 520M",
+    "pfid": 548,
+    "search_string": "1|78|548"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 500M Series (Notebooks)",
+    "psid": 78,
+    "name": "GeForce GT 520MX",
+    "pfid": 602,
+    "search_string": "1|78|602"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 400 Series",
+    "psid": 71,
+    "name": "GeForce GTX 480",
+    "pfid": 490,
+    "search_string": "1|71|490"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 400 Series",
+    "psid": 71,
+    "name": "GeForce GTX 470",
+    "pfid": 491,
+    "search_string": "1|71|491"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 400 Series",
+    "psid": 71,
+    "name": "GeForce GTX 465",
+    "pfid": 498,
+    "search_string": "1|71|498"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 400 Series",
+    "psid": 71,
+    "name": "GeForce GTX 460 SE v2",
+    "pfid": 600,
+    "search_string": "1|71|600"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 400 Series",
+    "psid": 71,
+    "name": "GeForce GTX 460 SE",
+    "pfid": 530,
+    "search_string": "1|71|530"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 400 Series",
+    "psid": 71,
+    "name": "GeForce GTX 460",
+    "pfid": 499,
+    "search_string": "1|71|499"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 400 Series",
+    "psid": 71,
+    "name": "GeForce GTS 450",
+    "pfid": 514,
+    "search_string": "1|71|514"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 400 Series",
+    "psid": 71,
+    "name": "GeForce GT 440",
+    "pfid": 541,
+    "search_string": "1|71|541"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 400 Series",
+    "psid": 71,
+    "name": "GeForce GT 430",
+    "pfid": 516,
+    "search_string": "1|71|516"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 400 Series",
+    "psid": 71,
+    "name": "GeForce GT 420",
+    "pfid": 538,
+    "search_string": "1|71|538"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 400 Series",
+    "psid": 71,
+    "name": "GeForce 405",
+    "pfid": 572,
+    "search_string": "1|71|572"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 200 Series",
+    "psid": 52,
+    "name": "GeForce GTX 295",
+    "pfid": 376,
+    "search_string": "1|52|376"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 200 Series",
+    "psid": 52,
+    "name": "GeForce GTX 285",
+    "pfid": 377,
+    "search_string": "1|52|377"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 200 Series",
+    "psid": 52,
+    "name": "GeForce GTX 280",
+    "pfid": 299,
+    "search_string": "1|52|299"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 200 Series",
+    "psid": 52,
+    "name": "GeForce GTX 275",
+    "pfid": 416,
+    "search_string": "1|52|416"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 200 Series",
+    "psid": 52,
+    "name": "GeForce GTX 260",
+    "pfid": 300,
+    "search_string": "1|52|300"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 200 Series",
+    "psid": 52,
+    "name": "GeForce GTS 250",
+    "pfid": 399,
+    "search_string": "1|52|399"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 200 Series",
+    "psid": 52,
+    "name": "GeForce GTS 240",
+    "pfid": 450,
+    "search_string": "1|52|450"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 200 Series",
+    "psid": 52,
+    "name": "GeForce GT 230",
+    "pfid": 449,
+    "search_string": "1|52|449"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 200 Series",
+    "psid": 52,
+    "name": "GeForce GT 240",
+    "pfid": 470,
+    "search_string": "1|52|470"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 200 Series",
+    "psid": 52,
+    "name": "GeForce GT 220",
+    "pfid": 448,
+    "search_string": "1|52|448"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 200 Series",
+    "psid": 52,
+    "name": "GeForce G210",
+    "pfid": 447,
+    "search_string": "1|52|447"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 200 Series",
+    "psid": 52,
+    "name": "GeForce 210",
+    "pfid": 453,
+    "search_string": "1|52|453"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 200 Series",
+    "psid": 52,
+    "name": "GeForce 205",
+    "pfid": 471,
+    "search_string": "1|52|471"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 100 Series",
+    "psid": 59,
+    "name": "GeForce GT 140",
+    "pfid": 400,
+    "search_string": "1|59|400"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 100 Series",
+    "psid": 59,
+    "name": "GeForce GT 130",
+    "pfid": 401,
+    "search_string": "1|59|401"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 100 Series",
+    "psid": 59,
+    "name": "GeForce GT 120",
+    "pfid": 402,
+    "search_string": "1|59|402"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 100 Series",
+    "psid": 59,
+    "name": "GeForce G100",
+    "pfid": 415,
+    "search_string": "1|59|415"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8 Series",
+    "psid": 1,
+    "name": "GeForce 8800 Ultra",
+    "pfid": 8,
+    "search_string": "1|1|8"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8 Series",
+    "psid": 1,
+    "name": "GeForce 8800 GTX",
+    "pfid": 7,
+    "search_string": "1|1|7"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8 Series",
+    "psid": 1,
+    "name": "GeForce 8800 GTS 512",
+    "pfid": 270,
+    "search_string": "1|1|270"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8 Series",
+    "psid": 1,
+    "name": "GeForce 8800 GTS",
+    "pfid": 6,
+    "search_string": "1|1|6"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8 Series",
+    "psid": 1,
+    "name": "GeForce 8800 GT",
+    "pfid": 258,
+    "search_string": "1|1|258"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8 Series",
+    "psid": 1,
+    "name": "GeForce 8800 GS",
+    "pfid": 281,
+    "search_string": "1|1|281"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8 Series",
+    "psid": 1,
+    "name": "GeForce 8600 GTS",
+    "pfid": 5,
+    "search_string": "1|1|5"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8 Series",
+    "psid": 1,
+    "name": "GeForce 8600 GT",
+    "pfid": 4,
+    "search_string": "1|1|4"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8 Series",
+    "psid": 1,
+    "name": "GeForce 8600 GS",
+    "pfid": 233,
+    "search_string": "1|1|233"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8 Series",
+    "psid": 1,
+    "name": "GeForce 8500 GT",
+    "pfid": 3,
+    "search_string": "1|1|3"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8 Series",
+    "psid": 1,
+    "name": "GeForce 8400 GS",
+    "pfid": 2,
+    "search_string": "1|1|2"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8 Series",
+    "psid": 1,
+    "name": "GeForce 8400 SE",
+    "pfid": 234,
+    "search_string": "1|1|234"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8 Series",
+    "psid": 1,
+    "name": "GeForce 8400",
+    "pfid": 272,
+    "search_string": "1|1|272"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8 Series",
+    "psid": 1,
+    "name": "GeForce 8300 GS",
+    "pfid": 1,
+    "search_string": "1|1|1"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8 Series",
+    "psid": 1,
+    "name": "GeForce 8300",
+    "pfid": 288,
+    "search_string": "1|1|288"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8 Series",
+    "psid": 1,
+    "name": "GeForce 8200",
+    "pfid": 289,
+    "search_string": "1|1|289"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8 Series",
+    "psid": 1,
+    "name": "GeForce 8200 /nForce 730a",
+    "pfid": 293,
+    "search_string": "1|1|293"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8 Series",
+    "psid": 1,
+    "name": "GeForce 8100 /nForce 720a",
+    "pfid": 290,
+    "search_string": "1|1|290"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8M Series (Notebooks)",
+    "psid": 54,
+    "name": "GeForce 8800M GTX",
+    "pfid": 363,
+    "search_string": "1|54|363"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8M Series (Notebooks)",
+    "psid": 54,
+    "name": "GeForce 8800M GTS",
+    "pfid": 364,
+    "search_string": "1|54|364"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8M Series (Notebooks)",
+    "psid": 54,
+    "name": "GeForce 8800M GS",
+    "pfid": 365,
+    "search_string": "1|54|365"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8M Series (Notebooks)",
+    "psid": 54,
+    "name": "GeForce 8700M GT",
+    "pfid": 366,
+    "search_string": "1|54|366"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8M Series (Notebooks)",
+    "psid": 54,
+    "name": "GeForce 8600M GT",
+    "pfid": 367,
+    "search_string": "1|54|367"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8M Series (Notebooks)",
+    "psid": 54,
+    "name": "GeForce 8600M GS",
+    "pfid": 368,
+    "search_string": "1|54|368"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8M Series (Notebooks)",
+    "psid": 54,
+    "name": "GeForce 8400M GT",
+    "pfid": 369,
+    "search_string": "1|54|369"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8M Series (Notebooks)",
+    "psid": 54,
+    "name": "GeForce 8400M GS",
+    "pfid": 370,
+    "search_string": "1|54|370"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8M Series (Notebooks)",
+    "psid": 54,
+    "name": "GeForce 8400M G",
+    "pfid": 371,
+    "search_string": "1|54|371"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8M Series (Notebooks)",
+    "psid": 54,
+    "name": "GeForce 8200M G",
+    "pfid": 385,
+    "search_string": "1|54|385"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce 8M Series (Notebooks)",
+    "psid": 54,
+    "name": "GeForce 8200M",
+    "pfid": 569,
+    "search_string": "1|54|569"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce Go 7 Series (Notebooks)",
+    "psid": 55,
+    "name": "GeForce Go 7950 GTX",
+    "pfid": 372,
+    "search_string": "1|55|372"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce Go 7 Series (Notebooks)",
+    "psid": 55,
+    "name": "GeForce Go 7900 GTX",
+    "pfid": 373,
+    "search_string": "1|55|373"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce Go 7 Series (Notebooks)",
+    "psid": 55,
+    "name": "GeForce Go 7900 GS",
+    "pfid": 375,
+    "search_string": "1|55|375"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce Go 7 Series (Notebooks)",
+    "psid": 55,
+    "name": "GeForce Go 7900 SE",
+    "pfid": 389,
+    "search_string": "1|55|389"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce Go 7 Series (Notebooks)",
+    "psid": 55,
+    "name": "GeForce Go 7800 GTX",
+    "pfid": 374,
+    "search_string": "1|55|374"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce Go 7 Series (Notebooks)",
+    "psid": 55,
+    "name": "GeForce Go 7800",
+    "pfid": 390,
+    "search_string": "1|55|390"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce Go 7 Series (Notebooks)",
+    "psid": 55,
+    "name": "GeForce Go 7700",
+    "pfid": 391,
+    "search_string": "1|55|391"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce Go 7 Series (Notebooks)",
+    "psid": 55,
+    "name": "GeForce Go 7600",
+    "pfid": 392,
+    "search_string": "1|55|392"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce Go 7 Series (Notebooks)",
+    "psid": 55,
+    "name": "GeForce Go 7400",
+    "pfid": 393,
+    "search_string": "1|55|393"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce Go 7 Series (Notebooks)",
+    "psid": 55,
+    "name": "GeForce Go 7300",
+    "pfid": 394,
+    "search_string": "1|55|394"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce Go 7 Series (Notebooks)",
+    "psid": 55,
+    "name": "GeForce Go 7200",
+    "pfid": 395,
+    "search_string": "1|55|395"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce Go 7 Series (Notebooks)",
+    "psid": 55,
+    "name": "GeForce 7150M / nForce 630M",
+    "pfid": 397,
+    "search_string": "1|55|397"
+  },
+  {
+    "type_name": "GeForce",
+    "pt": 1,
+    "series_name": "GeForce Go 7 Series (Notebooks)",
+    "psid": 55,
+    "name": "GeForce 7000M / nForce 610M",
+    "pfid": 396,
+    "search_string": "1|55|396"
+  },
+  {
+    "type_name": "TITAN",
+    "pt": 11,
+    "series_name": "NVIDIA TITAN Series",
+    "psid": 106,
+    "name": "NVIDIA TITAN RTX",
+    "pfid": 885,
+    "search_string": "11|106|885"
+  },
+  {
+    "type_name": "TITAN",
+    "pt": 11,
+    "series_name": "NVIDIA TITAN Series",
+    "psid": 106,
+    "name": "NVIDIA TITAN V",
+    "pfid": 861,
+    "search_string": "11|106|861"
+  },
+  {
+    "type_name": "TITAN",
+    "pt": 11,
+    "series_name": "NVIDIA TITAN Series",
+    "psid": 106,
+    "name": "NVIDIA TITAN Xp",
+    "pfid": 850,
+    "search_string": "11|106|850"
+  },
+  {
+    "type_name": "TITAN",
+    "pt": 11,
+    "series_name": "NVIDIA TITAN Series",
+    "psid": 106,
+    "name": "NVIDIA TITAN X (Pascal)",
+    "pfid": 818,
+    "search_string": "11|106|818"
+  },
+  {
+    "type_name": "TITAN",
+    "pt": 11,
+    "series_name": "NVIDIA TITAN Series",
+    "psid": 106,
+    "name": "GeForce GTX TITAN X",
+    "pfid": 766,
+    "search_string": "11|106|766"
+  },
+  {
+    "type_name": "TITAN",
+    "pt": 11,
+    "series_name": "NVIDIA TITAN Series",
+    "psid": 106,
+    "name": "GeForce GTX TITAN",
+    "pfid": 695,
+    "search_string": "11|106|695"
+  },
+  {
+    "type_name": "TITAN",
+    "pt": 11,
+    "series_name": "NVIDIA TITAN Series",
+    "psid": 106,
+    "name": "GeForce GTX TITAN Black",
+    "pfid": 729,
+    "search_string": "11|106|729"
+  },
+  {
+    "type_name": "TITAN",
+    "pt": 11,
+    "series_name": "NVIDIA TITAN Series",
+    "psid": 106,
+    "name": "GeForce GTX TITAN Z",
+    "pfid": 744,
+    "search_string": "11|106|744"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 7 Series",
+    "psid": 45,
+    "name": "nForce 790i Ultra SLI",
+    "pfid": 285,
+    "search_string": "4|45|285"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 7 Series",
+    "psid": 45,
+    "name": "nForce 790i SLI",
+    "pfid": 284,
+    "search_string": "4|45|284"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 7 Series",
+    "psid": 45,
+    "name": "nForce 780i SLI",
+    "pfid": 273,
+    "search_string": "4|45|273"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 7 Series",
+    "psid": 45,
+    "name": "nForce 760i SLI",
+    "pfid": 409,
+    "search_string": "4|45|409"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 7 Series",
+    "psid": 45,
+    "name": "nForce 750i SLI",
+    "pfid": 274,
+    "search_string": "4|45|274"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 7 Series",
+    "psid": 45,
+    "name": "nForce 740i SLI",
+    "pfid": 403,
+    "search_string": "4|45|403"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 7 Series",
+    "psid": 45,
+    "name": "nForce 730i/Geforce 9400/9300",
+    "pfid": 320,
+    "search_string": "4|45|320"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 7 Series",
+    "psid": 45,
+    "name": "nForce 720i",
+    "pfid": 378,
+    "search_string": "4|45|378"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 7 Series",
+    "psid": 45,
+    "name": "nForce 780a SLI",
+    "pfid": 292,
+    "search_string": "4|45|292"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 7 Series",
+    "psid": 45,
+    "name": "nForce 750a SLI",
+    "pfid": 404,
+    "search_string": "4|45|404"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 7 Series",
+    "psid": 45,
+    "name": "nForce 740a SLI",
+    "pfid": 405,
+    "search_string": "4|45|405"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 7 Series",
+    "psid": 45,
+    "name": "nForce 730a/GeForce 8300/8200",
+    "pfid": 406,
+    "search_string": "4|45|406"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 7 Series",
+    "psid": 45,
+    "name": "nForce 720a - GeForce 8100",
+    "pfid": 407,
+    "search_string": "4|45|407"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 7 Series",
+    "psid": 45,
+    "name": "nForce 710a",
+    "pfid": 408,
+    "search_string": "4|45|408"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 6 Series",
+    "psid": 5,
+    "name": "nForce 680i SLI",
+    "pfid": 177,
+    "search_string": "4|5|177"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 6 Series",
+    "psid": 5,
+    "name": "nForce 680i LT SLI",
+    "pfid": 178,
+    "search_string": "4|5|178"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 6 Series",
+    "psid": 5,
+    "name": "nForce 650i SLI",
+    "pfid": 179,
+    "search_string": "4|5|179"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 6 Series",
+    "psid": 5,
+    "name": "nForce 650i Ultra",
+    "pfid": 180,
+    "search_string": "4|5|180"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 6 Series",
+    "psid": 5,
+    "name": "nForce 630i/GeForce 7150",
+    "pfid": 255,
+    "search_string": "4|5|255"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 6 Series",
+    "psid": 5,
+    "name": "nForce 630i/GeForce 7100",
+    "pfid": 256,
+    "search_string": "4|5|256"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 6 Series",
+    "psid": 5,
+    "name": "nForce 610i/GeForce 7050",
+    "pfid": 257,
+    "search_string": "4|5|257"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 6 Series",
+    "psid": 5,
+    "name": "nForce 680a SLI",
+    "pfid": 181,
+    "search_string": "4|5|181"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 6 Series",
+    "psid": 5,
+    "name": "nForce 630a / GeForce 7050",
+    "pfid": 242,
+    "search_string": "4|5|242"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 6 Series",
+    "psid": 5,
+    "name": "nForce 630a / GeForce 7025",
+    "pfid": 243,
+    "search_string": "4|5|243"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 5 Series",
+    "psid": 6,
+    "name": "nForce 590 SLI Intel",
+    "pfid": 182,
+    "search_string": "4|6|182"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 5 Series",
+    "psid": 6,
+    "name": "nForce 570 SLI Intel",
+    "pfid": 183,
+    "search_string": "4|6|183"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 5 Series",
+    "psid": 6,
+    "name": "nForce 590 SLI AMD",
+    "pfid": 184,
+    "search_string": "4|6|184"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 5 Series",
+    "psid": 6,
+    "name": "nForce 570 SLI AMD",
+    "pfid": 185,
+    "search_string": "4|6|185"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 5 Series",
+    "psid": 6,
+    "name": "nForce 570 Ultra AMD",
+    "pfid": 186,
+    "search_string": "4|6|186"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 5 Series",
+    "psid": 6,
+    "name": "nForce 560",
+    "pfid": 224,
+    "search_string": "4|6|224"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 5 Series",
+    "psid": 6,
+    "name": "nForce 550",
+    "pfid": 187,
+    "search_string": "4|6|187"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 5 Series",
+    "psid": 6,
+    "name": "nForce 520",
+    "pfid": 190,
+    "search_string": "4|6|190"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "GeForce 2 GTS/Ultra/Pro",
+    "psid": 20,
+    "name": "GeForce2 GTS/Pro",
+    "pfid": 152,
+    "search_string": "4|20|152"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "GeForce 2 GTS/Ultra/Pro",
+    "psid": 20,
+    "name": "GeForce2 Ti",
+    "pfid": 153,
+    "search_string": "4|20|153"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "GeForce 2 GTS/Ultra/Pro",
+    "psid": 20,
+    "name": "GeForce2 Ultra",
+    "pfid": 154,
+    "search_string": "4|20|154"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "GeForce 2 MX Series",
+    "psid": 21,
+    "name": "GeForce2 Integrated GPU",
+    "pfid": 155,
+    "search_string": "4|21|155"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "GeForce 2 MX Series",
+    "psid": 21,
+    "name": "GeForce2 MX 100/200",
+    "pfid": 156,
+    "search_string": "4|21|156"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "GeForce 2 MX Series",
+    "psid": 21,
+    "name": "GeForce2 MX/MX 400",
+    "pfid": 157,
+    "search_string": "4|21|157"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 9 Series",
+    "psid": 58,
+    "name": "nForce 980a SLI",
+    "pfid": 398,
+    "search_string": "4|58|398"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 4 Series",
+    "psid": 7,
+    "name": "nForce4 SLI X16 Intel",
+    "pfid": 191,
+    "search_string": "4|7|191"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 4 Series",
+    "psid": 7,
+    "name": "nForce4 SLI Intel",
+    "pfid": 192,
+    "search_string": "4|7|192"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 4 Series",
+    "psid": 7,
+    "name": "nForce4 SLI XE Intel",
+    "pfid": 193,
+    "search_string": "4|7|193"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 4 Series",
+    "psid": 7,
+    "name": "nForce4 Ultra Intel",
+    "pfid": 194,
+    "search_string": "4|7|194"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 4 Series",
+    "psid": 7,
+    "name": "nForce4 SLI X16 AMD",
+    "pfid": 195,
+    "search_string": "4|7|195"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 4 Series",
+    "psid": 7,
+    "name": "nForce4 SLI AMD",
+    "pfid": 196,
+    "search_string": "4|7|196"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 4 Series",
+    "psid": 7,
+    "name": "nForce4 Ultra AMD",
+    "pfid": 197,
+    "search_string": "4|7|197"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 4 Series",
+    "psid": 7,
+    "name": "nForce4 AMD",
+    "pfid": 198,
+    "search_string": "4|7|198"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 4 Series",
+    "psid": 7,
+    "name": "nForce 430 / GeForce 6150",
+    "pfid": 200,
+    "search_string": "4|7|200"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 4 Series",
+    "psid": 7,
+    "name": "nForce 430 / GeForce 6150LE",
+    "pfid": 201,
+    "search_string": "4|7|201"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 4 Series",
+    "psid": 7,
+    "name": "nForce 410 / GeForce 6150LE",
+    "pfid": 202,
+    "search_string": "4|7|202"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 4 Series",
+    "psid": 7,
+    "name": "nForce 430 / GeForce 6100",
+    "pfid": 203,
+    "search_string": "4|7|203"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 4 Series",
+    "psid": 7,
+    "name": "nForce 410 / GeForce 6100",
+    "pfid": 204,
+    "search_string": "4|7|204"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 4 Series",
+    "psid": 7,
+    "name": "nForce 430 / GeForce 6150SE",
+    "pfid": 205,
+    "search_string": "4|7|205"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 4 Series",
+    "psid": 7,
+    "name": "nForce 430 / Geforce 6100",
+    "pfid": 206,
+    "search_string": "4|7|206"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 4 Series",
+    "psid": 7,
+    "name": "nForce 405 / Geforce 6100",
+    "pfid": 207,
+    "search_string": "4|7|207"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 4 Series",
+    "psid": 7,
+    "name": "nForce 400 / Geforce 6100",
+    "pfid": 208,
+    "search_string": "4|7|208"
+  },
+  {
+    "type_name": "Legacy",
+    "pt": 4,
+    "series_name": "nForce 4 Series",
+    "psid": 7,
+    "name": "nForce 420 / Geforce 6100",
+    "pfid": 209,
+    "search_string": "4|7|209"
+  },
+  {
+    "type_name": "3D Vision",
+    "pt": 5,
+    "series_name": "3D Vision",
+    "psid": 57,
+    "name": "Full driver CD for GeForce",
+    "pfid": 381,
+    "search_string": "5|57|381"
+  },
+  {
+    "type_name": "3D Vision",
+    "pt": 5,
+    "series_name": "3D Vision",
+    "psid": 57,
+    "name": "Full driver CD for Notebook PCs",
+    "pfid": 488,
+    "search_string": "5|57|488"
+  },
+  {
+    "type_name": "3D Vision",
+    "pt": 5,
+    "series_name": "3D Vision",
+    "psid": 57,
+    "name": "3D Vision driver for GeForce",
+    "pfid": 432,
+    "search_string": "5|57|432"
+  },
+  {
+    "type_name": "3D Vision",
+    "pt": 5,
+    "series_name": "3D Vision",
+    "psid": 57,
+    "name": "3D Vision driver for Notebook",
+    "pfid": 555,
+    "search_string": "5|57|555"
+  },
+  {
+    "type_name": "3D Vision",
+    "pt": 5,
+    "series_name": "3D Vision",
+    "psid": 57,
+    "name": "3D Vision driver for Quadro",
+    "pfid": 452,
+    "search_string": "5|57|452"
+  },
+  {
+    "type_name": "3D Vision",
+    "pt": 5,
+    "series_name": "3D Vision",
+    "psid": 57,
+    "name": "3D Vision Video Player",
+    "pfid": 451,
+    "search_string": "5|57|451"
+  },
+  {
+    "type_name": "3D Vision",
+    "pt": 5,
+    "series_name": "3D Vision Pro",
+    "psid": 64,
+    "name": "3D Vision Pro driver ",
+    "pfid": 535,
+    "search_string": "5|64|535"
+  },
+  {
+    "type_name": "3D Vision",
+    "pt": 5,
+    "series_name": "3D Vision Pro",
+    "psid": 64,
+    "name": "3D Vision Pro Video Player",
+    "pfid": 536,
+    "search_string": "5|64|536"
+  }
+]
